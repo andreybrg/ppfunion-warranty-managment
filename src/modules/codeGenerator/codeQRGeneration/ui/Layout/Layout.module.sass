@@ -1,0 +1,48 @@
+@use 'assets/styles/colors' as color
+@use 'assets/styles/mixins' as m
+    
+.wrapper
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    row-gap: 30px
+    width: 300px
+    margin: 0 auto
+.qrcode
+    width: 330px
+    height: 330px
+    background-color: #fff
+    display: flex
+    justify-content: center
+    align-items: center
+    border: 3px solid color.$black-color
+    border-radius: 10px
+.code
+    @include m.fontInter(26px, color.$black-color, 500, 120%)
+
+@media print
+    @page
+        margin: 0
+        size: A4
+    body
+        // width: 21cm
+        // height: 29.7cm
+        margin: 30mm 45mm 30mm 45mm
+        /* change the margins as you want them to be. */
+    header
+        display: none
+
+    button
+        display: none
+        span
+            display: none
+
+    #Header, #Footer
+        display: none !important
+
+    *, *::before, *::after
+        color: #000
+
+    .container
+        width: 100% !important

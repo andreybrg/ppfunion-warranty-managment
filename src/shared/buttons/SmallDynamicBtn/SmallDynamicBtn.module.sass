@@ -1,0 +1,40 @@
+@use 'assets/styles/colors' as color
+@use 'assets/styles/mixins' as m
+@use 'assets/styles/functions' as f
+    
+.btn
+    outline: none
+    width: fit-content
+    height: fit-content
+    background-color: unset
+    display: flex
+    justify-content: center
+    align-items: center
+    cursor: pointer
+    box-sizing: border-box
+    &[disabled]
+        opacity: .3
+    &:hover
+        .container
+            border-color: color.$black-color
+            transition: .2s
+    &_active
+        .container
+            border-color: color.$theme-color
+            background-color: color.$theme-color
+            span
+                color: color.$white-color
+
+.container
+    padding: 7px 10px
+    box-sizing: border-box
+    width: fit-content
+    height: fit-content
+    border: 1px solid f.HEXtoRGBA(color.$black-color, .5)
+    border-radius: 5px
+    display: flex
+    justify-content: center
+    align-items: center
+    transition: .2s
+    span
+        @include m.fontInter(13px, color.$black-color, 500, 120%)

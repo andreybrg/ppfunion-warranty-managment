@@ -1,0 +1,15 @@
+@use 'assets/styles/colors' as color
+@use 'assets/styles/mixins' as m
+    
+.label
+    @include m.inputLabel
+    input[type="text"]
+        @include m.basicInput
+    input[type="text"]::placeholder
+        @include m.inputPlaceholder
+        
+.title
+    @include m.inputTitle
+    
+.fieldError
+    @include m.fieldError

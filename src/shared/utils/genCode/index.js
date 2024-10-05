@@ -1,0 +1,1 @@
+export { genCode } from './genCode'

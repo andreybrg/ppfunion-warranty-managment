@@ -1,0 +1,35 @@
+@use 'assets/styles/mixins' as m
+@use 'assets/styles/colors' as color
+
+.notice
+    position: relative
+
+.icon
+    font-size: 0
+    animation: alert 1s linear infinite
+    &:hover + .advice
+        opacity: 1
+        transition: .2s
+        
+.advice
+    position: absolute
+    @include m.fontInter(13px, color.$white-color, 500, 120%)
+    background-color: color.$theme-color
+    width: 250px
+    right: 34px
+    top: -5px
+    padding: 10px
+    box-sizing: border-box
+    border-radius: 5px
+    opacity: 0
+    transition: .2s
+
+@keyframes alert
+    0%
+        opacity: 0
+    20%
+        opacity: 1
+    80%
+        opacity: 1
+    100%
+        opacity: 0

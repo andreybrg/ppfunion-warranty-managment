@@ -1,0 +1,35 @@
+@use 'assets/styles/colors' as color
+@use 'assets/styles/mixins' as m
+@use 'assets/styles/functions' as f
+    
+.panel
+    display: flex
+    flex-direction: column
+
+.chips
+    display: flex
+    align-items: center
+    margin: 30px 0 0 0
+    &:empty
+        display: none
+
+.chipItem
+    padding: 5px 10px
+    border-radius: 5px
+    box-sizing: border-box
+    border: 1px solid f.HEXtoRGBA(color.$black-color, .17)
+    @include m.fontInter(13px, color.$black-color, 500, 120%)
+    background-color: color.$white-color
+    display: flex
+    align-items: center
+    column-gap: 5px
+    
+.resetChip
+    width: 15px
+    height: 15px
+    opacity: .6
+    cursor: pointer
+    background-repeat: no-repeat
+    background-size: cover
+    background-position: center
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPG1hc2sgaWQ9Im1hc2swXzI0XzU1MCIgc3R5bGU9Im1hc2stdHlwZTphbHBoYSIgbWFza1VuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiBmaWxsPSIjRDlEOUQ5Ii8+CjwvbWFzaz4KPGcgbWFzaz0idXJsKCNtYXNrMF8yNF81NTApIj4KPHBhdGggZD0iTTEyIDEzLjRMNy4wOTk5OSAxOC4zQzYuOTE2NjUgMTguNDgzNCA2LjY4MzMyIDE4LjU3NSA2LjM5OTk5IDE4LjU3NUM2LjExNjY1IDE4LjU3NSA1Ljg4MzMyIDE4LjQ4MzQgNS42OTk5OSAxOC4zQzUuNTE2NjUgMTguMTE2NyA1LjQyNDk5IDE3Ljg4MzQgNS40MjQ5OSAxNy42QzUuNDI0OTkgMTcuMzE2NyA1LjUxNjY1IDE3LjA4MzQgNS42OTk5OSAxNi45TDEwLjYgMTJMNS42OTk5OSA3LjEwMDA1QzUuNTE2NjUgNi45MTY3MiA1LjQyNDk5IDYuNjgzMzggNS40MjQ5OSA2LjQwMDA1QzUuNDI0OTkgNi4xMTY3MiA1LjUxNjY1IDUuODgzMzggNS42OTk5OSA1LjcwMDA1QzUuODgzMzIgNS41MTY3MiA2LjExNjY1IDUuNDI1MDUgNi4zOTk5OSA1LjQyNTA1QzYuNjgzMzIgNS40MjUwNSA2LjkxNjY1IDUuNTE2NzIgNy4wOTk5OSA1LjcwMDA1TDEyIDEwLjZMMTYuOSA1LjcwMDA1QzE3LjA4MzMgNS41MTY3MiAxNy4zMTY3IDUuNDI1MDUgMTcuNiA1LjQyNTA1QzE3Ljg4MzMgNS40MjUwNSAxOC4xMTY3IDUuNTE2NzIgMTguMyA1LjcwMDA1QzE4LjQ4MzMgNS44ODMzOCAxOC41NzUgNi4xMTY3MiAxOC41NzUgNi40MDAwNUMxOC41NzUgNi42ODMzOCAxOC40ODMzIDYuOTE2NzIgMTguMyA3LjEwMDA1TDEzLjQgMTJMMTguMyAxNi45QzE4LjQ4MzMgMTcuMDgzNCAxOC41NzUgMTcuMzE2NyAxOC41NzUgMTcuNkMxOC41NzUgMTcuODgzNCAxOC40ODMzIDE4LjExNjcgMTguMyAxOC4zQzE4LjExNjcgMTguNDgzNCAxNy44ODMzIDE4LjU3NSAxNy42IDE4LjU3NUMxNy4zMTY3IDE4LjU3NSAxNy4wODMzIDE4LjQ4MzQgMTYuOSAxOC4zTDEyIDEzLjRaIiBmaWxsPSIjMTUxNTE1Ii8+CjwvZz4KPC9zdmc+Cg==")

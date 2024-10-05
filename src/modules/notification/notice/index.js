@@ -1,0 +1,1 @@
+export { Container as NoticeModule } from './ui/Layout/Container'

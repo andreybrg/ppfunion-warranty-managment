@@ -1,0 +1,64 @@
+@use 'assets/styles/colors' as color
+@use 'assets/styles/mixins' as m
+    
+.label
+    @include m.inputLabel
+    row-gap: 0
+    input[type="search"]::-webkit-inner-spin-button,
+    input[type="search"]::-webkit-outer-spin-button
+        -webkit-appearance: none
+        margin: 0
+    input[type="search"]
+        -webkit-appearance: none
+        appearance: none
+        -moz-appearance: textfield
+    input[type="search"]
+        @include m.basicInput
+    input[type="search"]::placeholder
+        @include m.inputPlaceholder
+
+.withSelect
+    padding: 0 15px 0 150px !important
+
+.title
+    @include m.inputTitle
+    
+.fieldError
+    @include m.fieldError
+
+.select
+    position: absolute
+    left: 0
+    top: 0
+    height: 100%
+    width: 135px
+    .selectContainer
+        position: relative
+        height: 100%
+        select
+            cursor: pointer
+            -webkit-appearance: none
+            appearance: none
+            height: 100%
+            width: 100%
+            border: none
+            padding: 0 15px
+            background: unset
+            @include m.fontInter(16px, color.$black-color, 500, 120%)
+            outline: none
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPG1hc2sgaWQ9Im1hc2swXzQ1XzE0MCIgc3R5bGU9Im1hc2stdHlwZTphbHBoYSIgbWFza1VuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij4KPHJlY3QgeD0iMjQiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdHJhbnNmb3JtPSJyb3RhdGUoOTAgMjQgMCkiIGZpbGw9IiNEOUQ5RDkiLz4KPC9tYXNrPgo8ZyBtYXNrPSJ1cmwoI21hc2swXzQ1XzE0MCkiPgo8cGF0aCBkPSJNMTIgMTMuNTk5OUwxNS45IDkuNjk5OTNDMTYuMDgzMyA5LjUxNjU5IDE2LjMxNjYgOS40MjQ5MyAxNi42IDkuNDI0OTNDMTYuODgzMyA5LjQyNDkzIDE3LjExNjYgOS41MTY1OSAxNy4zIDkuNjk5OTNDMTcuNDgzMyA5Ljg4MzI2IDE3LjU3NSAxMC4xMTY2IDE3LjU3NSAxMC4zOTk5QzE3LjU3NSAxMC42ODMzIDE3LjQ4MzMgMTAuOTE2NiAxNy4zIDExLjA5OTlMMTIuNyAxNS42OTk5QzEyLjYgMTUuNzk5OSAxMi40OTE2IDE1Ljg3MDggMTIuMzc1IDE1LjkxMjRDMTIuMjU4MyAxNS45NTQxIDEyLjEzMzMgMTUuOTc0OSAxMiAxNS45NzQ5QzExLjg2NjYgMTUuOTc0OSAxMS43NDE2IDE1Ljk1NDEgMTEuNjI1IDE1LjkxMjRDMTEuNTA4MyAxNS44NzA4IDExLjQgMTUuNzk5OSAxMS4zIDE1LjY5OTlMNi42OTk5NSAxMS4wOTk5QzYuNTE2NjIgMTAuOTE2NiA2LjQyNDk1IDEwLjY4MzMgNi40MjQ5NSAxMC4zOTk5QzYuNDI0OTUgMTAuMTE2NiA2LjUxNjYyIDkuODgzMjYgNi42OTk5NSA5LjY5OTkzQzYuODgzMjggOS41MTY1OSA3LjExNjYyIDkuNDI0OTMgNy4zOTk5NSA5LjQyNDkzQzcuNjgzMjggOS40MjQ5MyA3LjkxNjYyIDkuNTE2NTkgOC4wOTk5NSA5LjY5OTkzTDEyIDEzLjU5OTlaIiBmaWxsPSIjMTUxNTE1Ii8+CjwvZz4KPC9zdmc+Cg==")
+            background-repeat: no-repeat
+            background-position: right 10px center
+            option
+                @include m.fontInter(16px, color.$black-color, 500, 120%)
+        &::before
+            position: absolute
+            content: ''
+            right: 0
+            bottom: 0
+            top: 0
+            margin: auto
+            height: 20px
+            width: 1px
+            background-color: color.$black-color
+            opacity: .3

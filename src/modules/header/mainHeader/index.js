@@ -1,0 +1,1 @@
+export { Container as MainHeaderModule } from './ui/Layout/Container'

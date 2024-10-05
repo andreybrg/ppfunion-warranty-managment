@@ -1,0 +1,1 @@
+export { Container as MainFormMessage } from './Layout/Container'

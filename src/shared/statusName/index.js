@@ -1,0 +1,1 @@
+export { Layout as StatusNameColored } from './ui/Layout/Layout'

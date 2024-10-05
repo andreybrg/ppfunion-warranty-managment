@@ -1,0 +1,53 @@
+@use 'assets/styles/functions' as f
+@use 'assets/styles/mixins' as m
+@use 'assets/styles/colors' as color
+    
+.item
+    width: 20%
+    padding: 5px
+    box-sizing: border-box
+    
+.container
+    position: relative
+    width: 100%
+    display: flex
+    flex-direction: column
+    box-sizing: border-box
+    padding: 10px
+    border: 1px solid f.HEXtoRGBA(color.$black-color, .17)
+    background-color: color.$white-color
+    border-radius: 5px
+    cursor: pointer
+    transition: .2s
+    &:hover
+        border-color: color.$black-color
+        transition: .2s
+
+.printBtn
+    position: absolute
+    top: 6px
+    right: 6px
+    padding: 4px
+    font-size: 0
+    opacity: .7
+    transition: .2s
+    &:hover
+        opacity: 1
+        transition: .2s
+
+.date
+    @include m.fontInter(13px, color.$black-color, 500, 120%)
+    opacity: .4
+    margin: 0 0 15px 0
+.code
+    @include m.fontInter(16px, color.$black-color, 500, 120%)
+    margin: 0 0 5px 0
+.status
+    @include m.fontInter(13px, color.$black-color, 500, 120%)
+    &_new
+        color: color.$theme-color
+    &_active
+        color: color.$black-color
+        opacity: .4
+    &_registered
+        color: color.$green-color

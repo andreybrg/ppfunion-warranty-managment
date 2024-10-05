@@ -1,0 +1,22 @@
+@use 'assets/styles/colors' as color
+@use 'assets/styles/mixins' as m
+    
+.label
+    @include m.inputLabel
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button
+        -webkit-appearance: none
+        margin: 0
+    input[type="number"]
+        -webkit-appearance: none
+        appearance: none
+        -moz-appearance: textfield
+    input[type="number"]
+        @include m.basicInput
+    input[type="number"]::placeholder
+        @include m.inputPlaceholder
+.title
+    @include m.inputTitle
+    
+.fieldError
+    @include m.fieldError

@@ -1,0 +1,1 @@
+export { Container as CodeQRGenerationModule } from './ui/Layout/Container'

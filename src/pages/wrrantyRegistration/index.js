@@ -1,0 +1,1 @@
+export { WarrantyRegistration } from'./ui/WarrantyRegistration'
