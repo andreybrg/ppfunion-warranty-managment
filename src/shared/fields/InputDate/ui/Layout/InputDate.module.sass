@@ -4,6 +4,8 @@
     @include m.inputLabel
     input[type="date"]
         @include m.basicInput
+        &::before
+            
     input[type="date"]::placeholder
         @include m.inputPlaceholder
         
@@ -12,3 +14,22 @@
     
 .fieldError
     @include m.fieldError
+
+.date
+    position: absolute
+    width: 24px
+    height: 43px
+    right: 15px
+    top: auto
+    bottom: 1px
+    left: auto
+    background-color: var(--input-bg-color)
+    margin: auto
+    pointer-events: none
+    display: flex
+    align-items: center
+    pointer-events: none
+    cursor: pointer
+    svg
+        path
+            fill: var(--text-color)

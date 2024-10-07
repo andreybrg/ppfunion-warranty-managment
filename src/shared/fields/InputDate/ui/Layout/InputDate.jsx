@@ -1,6 +1,6 @@
 import React from "react"
 import style from './InputDate.module.sass'
-
+import { ReactComponent as DatePickerSvg } from 'assets/images/calendar_month.svg'
 export const InputDate = ({ 
     label,
     id,
@@ -21,6 +21,9 @@ export const InputDate = ({
                 type={'date'}
                 max="3000-01-01"
                 />
+                <div className={style.date}>
+                    <DatePickerSvg/>
+                </div>
             {formikTouched && formikErrors ? <div className={style.fieldError}>{formikErrors}</div> : null}
         </label>
     )
