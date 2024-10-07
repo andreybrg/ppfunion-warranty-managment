@@ -8,6 +8,7 @@ import cn from "classnames"
 export const WarrantyRegistration = () => {
 
     return(
+        <>
         <div className={style.page}>
             <header className={cn(commonStyle.header, commonStyle.header_fixed)}>
                 <div className={commonStyle.wrap}>
@@ -24,5 +25,7 @@ export const WarrantyRegistration = () => {
                 </div>
             </main>
         </div>
+        <div className={style.pageBackGround}></div>
+        </>
     )
 }
