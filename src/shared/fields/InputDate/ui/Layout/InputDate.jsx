@@ -12,18 +12,16 @@ export const InputDate = ({
     formikErrors=null,
 }) => {
 
-    const fieldRef = useRef(null)
     return(
         <label htmlFor={id || name} className={style.label}>
             <div className={style.title}>{label}</div>
             <input
-                ref={fieldRef}
                 {...formikFieldProps}
                 placeholder={"Enter the needed date"} 
                 type={'date'}
                 max="3000-01-01"
                 />
-            <div onClick={() => fieldRef.current.click()} className={style.dateCloneField}>
+            <div className={style.dateCloneField}>
                 {formikFieldProps.value ? formikFieldProps.value : 'Выберите дату...'}
             </div>
             <div className={style.date}>
