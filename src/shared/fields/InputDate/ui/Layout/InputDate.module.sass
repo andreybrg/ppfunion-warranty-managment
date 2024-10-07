@@ -4,8 +4,8 @@
     @include m.inputLabel
     input[type="date"]
         @include m.basicInput
-        &::before
-            
+        @include m.s900
+            opacity: 0
     input[type="date"]::placeholder
         @include m.inputPlaceholder
         
@@ -25,7 +25,6 @@
     left: auto
     background-color: var(--input-bg-color)
     margin: auto
-    pointer-events: none
     display: flex
     align-items: center
     pointer-events: none
@@ -33,3 +32,13 @@
     svg
         path
             fill: var(--text-color)
+
+.dateCloneField
+    @include m.basicInput
+    position: absolute
+    bottom: 0
+    left: 0
+    display: none
+    @include m.s900
+        display: flex
+        align-items: center
