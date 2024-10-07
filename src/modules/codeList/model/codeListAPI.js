@@ -8,11 +8,19 @@ export const codeListAPI = createApi({
     endpoints: (builder) => ({
         // Получить данные для приложения
         getCodes: builder.query({
-            query: ( data ) => ({
-                url: `codes/get/all?page=${data.page}&limit=${data.limit}&${data.status?`status=${data.status}`:``}`,
-                validateStatus: (response, result) =>
-                    response.status === 200 && !result.error
-            }),
+            query: ( data ) => {
+                let queryUrl = 'codes/get/all?page='+data.page+'&limit='+data.limit
+                queryUrl += data.status?`&status=${data.status}`:``
+                queryUrl += data.searchType?`&searchType=${data.searchType}`:``
+                queryUrl += data.searchQuery?`&searchQuery=${data.searchQuery}`:``
+                
+                console.log(queryUrl)
+
+                return {
+                    url: queryUrl,
+                    validateStatus: (response, result) =>
+                        response.status === 200 && !result.error}
+            },
             providesTags: (result) =>
                 result.data
                     ? 

@@ -1,15 +1,11 @@
 import React, { useEffect } from "react"
 import { Layout } from "./Layout"
-import { useSelector } from "react-redux"
 import { setListPage, useGetCodesQuery } from "modules/codeList/model"
-import { CODE_QUERY_PAGE_LIMIT } from "shared/utils/constants"
 import { MainPreloader } from "modules/preloaders"
 import style from './Layout.module.sass'
+import { withCodesQueryData } from "shared/hoc"
 
-export const Container = () => {
-
-    const filtration = useSelector(store => store.filtration.filtration)
-    const currentPage = useSelector(store => store.codeList.data.page)
+export const Container = ({ queryData }) => {
 
     const changePage = (page) => {
         setListPage({page})
@@ -21,19 +17,11 @@ export const Container = () => {
         isLoading: codesDataIsLoading, 
         refetch: refetchCodesData,
         isFetching: codesDataIsFetching
-    } = useGetCodesQuery({
-        page: currentPage,
-        limit: CODE_QUERY_PAGE_LIMIT,
-        status: filtration.status
-    })
+    } = useGetCodesQuery(queryData)
 
     useEffect(() => {
-        refetchCodesData({
-            page: currentPage,
-            limit: CODE_QUERY_PAGE_LIMIT,
-            status: filtration.status
-        })
-    }, [filtration.status])
+        refetchCodesData(queryData)
+    }, [queryData.status])
 
     if(!codesDataIsFetching && codesData) {
         return(
@@ -49,3 +37,5 @@ export const Container = () => {
         )
     }
 }
+
+export const withCodesQueryDataContainer = withCodesQueryData(Container)

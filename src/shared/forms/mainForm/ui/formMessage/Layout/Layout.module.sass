@@ -1,16 +1,14 @@
 @use 'assets/styles/mixins' as m
-@use 'assets/styles/functions' as f
-@use 'assets/styles/colors' as color
 
 .message
     width: 100%
     margin: 0
     padding: 15px
     box-sizing: border-box
-    border-radius: 3px
-    background-color: f.HEXtoRGBA(color.$black-color, .1)
-    @include m.fontInter(14px, color.$black-color, 500, 140% )
+    border-radius: 5px
+    background-color: rgba(var(--rgb-text-color), 1)
+    @include m.fontInter(14px, var(--text-color), 500, 140% )
     &_error
-        background-color: f.HEXtoRGBA(color.$red-color, .1)
+        background-color: rgba(var(--rgb-red-color), 1)
     &_success
-        background-color: f.HEXtoRGBA(color.$green-color, .1)
+        background-color: rgba(var(--rgb-green-color), 1)

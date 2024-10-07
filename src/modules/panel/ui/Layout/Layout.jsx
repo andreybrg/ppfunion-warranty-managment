@@ -4,7 +4,7 @@ import { FiltrationModule } from "modules/filtration"
 import { CodeListModule } from "modules/codeList"
 import { CodeGenerationBtn } from "modules/codeGenerator"
 
-export const Layout = ({ searchValue }) => {
+export const Layout = ({ searchValue, resetSearchQuery }) => {
     return(
         <div className={style.panel}>
             <FiltrationModule/>
@@ -13,7 +13,7 @@ export const Layout = ({ searchValue }) => {
                     ? 
                     <div className={style.chipItem}>
                         Поиск: {searchValue}
-                        <div className={style.resetChip}></div>
+                        <div onClick={() => resetSearchQuery()} className={style.resetChip}></div>
                     </div> 
                     : null}
             </div>

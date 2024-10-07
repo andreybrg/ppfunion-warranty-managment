@@ -1,5 +1,4 @@
 @use 'assets/styles/mixins' as m
-@use 'assets/styles/colors' as color
     
 .container
     display: flex
@@ -7,10 +6,10 @@
     height: inherit
 
 .status
-    @include m.fontInter(16px, color.$black-color, 500, 120%)
+    @include m.fontInter(16px, var(--text-color), 500, 120%)
 
 .info
-    @include m.fontInter(14px, color.$black-color, 500, 120%)
+    @include m.fontInter(14px, var(--text-color), 500, 120%)
     margin: 20px 0 0 0
     &:empty
         display: none

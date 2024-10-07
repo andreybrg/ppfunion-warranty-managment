@@ -1,0 +1,45 @@
+@use 'assets/styles/mixins' as m
+
+.header
+    display: flex
+    align-items: center
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    top: 40px
+    @include m.s900
+        top: 20px
+.headerContent
+    display: flex
+    align-items: center
+    column-gap: 40px
+    width: 100%
+
+.logo
+    height: 30px
+    width: auto
+    svg
+        height: 30px
+
+.controls
+    margin: 0 0 0 auto
+    display: flex
+    align-items: center
+.controlsItem
+    display: flex
+    align-items: center
+.bigText
+    display: flex
+    align-items: center
+    column-gap: 10px
+    svg
+        width: 24px
+        height: 24px
+        opacity: .6
+        @include m.s900
+            opacity: 1
+    span
+        @include m.fontInter(20px, var(--text-color), 500, 120%)
+        @include m.s900
+            display: none

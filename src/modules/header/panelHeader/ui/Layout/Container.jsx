@@ -3,6 +3,7 @@ import { Layout } from "./Layout"
 
 export const Container = () => {
     return(
-        <Layout/>
+        <Layout
+            />
     )
 }

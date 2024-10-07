@@ -1,4 +1,3 @@
-@use 'assets/styles/colors' as color
 @use 'assets/styles/mixins' as m
 
 .scrollable
@@ -14,7 +13,7 @@
     flex-direction: column
     row-gap: 5px
     span
-        @include m.fontInter(16px, color.$black-color, 500, 120%)
+        @include m.fontInter(16px, var(--text-color), 500, 120%)
         &:first-child
             font-size: 13px
             opacity: .5

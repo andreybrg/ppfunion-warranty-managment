@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { codeGeneratorAPI } from './codeGeneratorAPI'
 import { codeListAPI } from 'modules/codeList/model'
+import { notificationAPI } from 'modules/notification'
 
 export const addNewCodes = createAsyncThunk(
     'codeGenerator/addNewCodes',
@@ -19,6 +20,7 @@ export const addNewCodes = createAsyncThunk(
                 throw Error('Error')
             } else {
                 await dispatch(codeListAPI.util.invalidateTags(["CodeList"]))
+                await dispatch(notificationAPI.util.invalidateTags(["CodeItem"]))
             }
         } catch (error) {
             console.error(error)

@@ -9,6 +9,8 @@ import { centeredModalSlice } from "modules/modals/centeredModal"
 import { codeGeneratorAPI, codeGeneratorSlice } from "modules/codeGenerator"
 import { alertSlice } from "modules/alerts"
 import { searchSlice } from "modules/search"
+import { warrantyRegistrationAPI, warrantyRegistrationSlice } from "modules/warrantyRegistration"
+
 
 const store = configureStore({
     reducer: {
@@ -21,10 +23,12 @@ const store = configureStore({
         codeGenerator: codeGeneratorSlice,
         alerts: alertSlice,
         search: searchSlice,
+        warrantyRegistration: warrantyRegistrationSlice,
         [appAPI.reducerPath]: appAPI.reducer,
         [codeListAPI.reducerPath]: codeListAPI.reducer,
         [codeCardAPI.reducerPath]: codeCardAPI.reducer,
         [notificationAPI.reducerPath]: notificationAPI.reducer,
+        [warrantyRegistrationAPI.reducerPath]: warrantyRegistrationAPI.reducer,
         
     },
     middleware: (getDefaultMiddleware) =>
@@ -34,6 +38,7 @@ const store = configureStore({
             .concat(codeCardAPI.middleware)
             .concat(notificationAPI.middleware)
             .concat(codeGeneratorAPI.middleware)
+            .concat(warrantyRegistrationAPI.middleware)
 })
 
 export default store

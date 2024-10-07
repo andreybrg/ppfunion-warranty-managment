@@ -1,6 +1,4 @@
-@use 'assets/styles/colors' as color
 @use 'assets/styles/mixins' as m
-@use 'assets/styles/functions' as f
 
 .modal
     position: fixed
@@ -9,7 +7,7 @@
     right: 0
     overflow-y: auto
     height: 100vh
-    background-color: f.HEXtoRGBA(color.$black-color, .5)
+    background-color: rgba(var(--rgb-modal-bg-color), .5)
     display: flex
     justify-content: center
     align-items: flex-start
@@ -20,7 +18,7 @@
 .container
     padding: 20px
     box-sizing: border-box
-    background: color.$body-color
+    background: var(--body-color)
     border-radius: 10px
     width: 390px
     display: flex
@@ -35,7 +33,7 @@
     column-gap: 10px
     margin: 0 0 30px 0
     &Title
-        @include m.fontInter(26px, color.$black-color, 500, 120%)
+        @include m.fontInter(26px, var(--text-color), 500, 120%)
     &Close
         font-size: 0
         position: absolute
@@ -46,7 +44,7 @@
         background: unset
         border: none
         path
-            fill: color.$white-color
+            fill: white
 
 .content
     height: 100%

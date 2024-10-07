@@ -1,11 +1,11 @@
-@use 'assets/styles/functions' as f
 @use 'assets/styles/mixins' as m
-@use 'assets/styles/colors' as color
     
 .item
     width: 20%
     padding: 5px
     box-sizing: border-box
+    @include m.s900
+        width: 100%
     
 .container
     position: relative
@@ -14,13 +14,13 @@
     flex-direction: column
     box-sizing: border-box
     padding: 10px
-    border: 1px solid f.HEXtoRGBA(color.$black-color, .17)
-    background-color: color.$white-color
+    border: 1px solid rgba(var(--rgb-border-color), .17)
+    background-color: var(--button-bg-color)
     border-radius: 5px
     cursor: pointer
     transition: .2s
     &:hover
-        border-color: color.$black-color
+        border-color: var(--border-color)
         transition: .2s
 
 .printBtn
@@ -34,20 +34,23 @@
     &:hover
         opacity: 1
         transition: .2s
+    svg
+        path
+            fill: var(--text-color)
 
 .date
-    @include m.fontInter(13px, color.$black-color, 500, 120%)
+    @include m.fontInter(13px, var(--text-color), 500, 120%)
     opacity: .4
     margin: 0 0 15px 0
 .code
-    @include m.fontInter(16px, color.$black-color, 500, 120%)
+    @include m.fontInter(16px, var(--text-color), 500, 120%)
     margin: 0 0 5px 0
 .status
-    @include m.fontInter(13px, color.$black-color, 500, 120%)
+    @include m.fontInter(13px, var(--text-color), 500, 120%)
     &_new
-        color: color.$theme-color
+        color: var(--theme-color)
     &_active
-        color: color.$black-color
+        color: var(--text-color)
         opacity: .4
     &_registered
-        color: color.$green-color
+        color: var(--green-color)

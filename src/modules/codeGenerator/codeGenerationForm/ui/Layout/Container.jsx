@@ -13,7 +13,6 @@ export const Container = () => {
     const { centeredModalController } = useContext(ModalsContext)
 
     const dispatch = useDispatch()
-    const [ codesState, setCodesState ] = useState([])
     const isRequestPending = useSelector(store => store.codeGenerator.codeAdding.isPending)
 
     const formik = useFormik({
@@ -28,7 +27,6 @@ export const Container = () => {
         }),
         onSubmit: ({ codesQtt }) => {
             const codes = genCode(codesQtt)
-            setCodesState(codes)
             dispatch(addNewCodes({ codes: codes }))
             dispatch(setNewMicroalert({text: 'Новые коды гарантии успешно сгененрированы'}))
             centeredModalController.unmountCenteredModal()
@@ -39,7 +37,6 @@ export const Container = () => {
     return(
         <Layout
             formik={formik}
-            codesState={codesState}
             isRequestPending={isRequestPending}
             />
     )

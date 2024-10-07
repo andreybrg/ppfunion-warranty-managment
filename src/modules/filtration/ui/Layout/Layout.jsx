@@ -1,7 +1,6 @@
 import React from "react"
 import style from './Layout.module.sass'
 import { SmallDynamicBtn } from "shared/buttons"
-
 export const Layout = ({ filters, filtration, onChangeFiltrationByStatus }) => {
 
     const currentFiltrationStatus = filtration.status

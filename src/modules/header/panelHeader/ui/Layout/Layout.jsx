@@ -5,6 +5,7 @@ import { Controls } from "../../controls"
 import { SearchModule } from "modules/search"
 
 export const Layout = () => {
+
     return(
         <div className={style.header}>
             <div className={style.logo}>

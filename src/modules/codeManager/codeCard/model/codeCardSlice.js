@@ -11,11 +11,10 @@ export const doCodeActivation = createAsyncThunk(
             
             // response.error приходит если на сервере ошибка 500 или другая
             if(response.data.error) {
-                throw Error('Error')
+                throw Error()
             } else {
                 await dispatch(codeListAPI.util.invalidateTags(["CodeList"]))
                 await dispatch(notificationAPI.util.invalidateTags(["CodeItem"]))
-                
             }
         } catch (error) {
             console.error(error)

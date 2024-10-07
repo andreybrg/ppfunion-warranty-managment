@@ -1,0 +1,14 @@
+@use 'assets/styles/mixins' as m
+    
+.label
+    @include m.inputLabel
+    input[type="date"]
+        @include m.basicInput
+    input[type="date"]::placeholder
+        @include m.inputPlaceholder
+        
+.title
+    @include m.inputTitle
+    
+.fieldError
+    @include m.fieldError

@@ -1,5 +1,4 @@
 @use 'assets/styles/mixins' as m
-@use 'assets/styles/colors' as color
 
 .notice
     position: relative
@@ -10,11 +9,14 @@
     &:hover + .advice
         opacity: 1
         transition: .2s
+    svg
+        path
+            fill: var(--theme-color)
         
 .advice
     position: absolute
-    @include m.fontInter(13px, color.$white-color, 500, 120%)
-    background-color: color.$theme-color
+    @include m.fontInter(13px, var(--theme-inner-color), 500, 120%)
+    background-color: var(--theme-color)
     width: 250px
     right: 34px
     top: -5px

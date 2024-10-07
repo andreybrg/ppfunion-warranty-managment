@@ -1,20 +1,12 @@
 import React from 'react'
-import style from './Layout.module.sass'
-import { MainForm, MainFormMessage } from 'shared/forms'
+import { MainForm } from 'shared/forms'
 import { InputNumber } from 'shared/fields'
 import { MainBtn } from 'shared/buttons'
 
-export const Layout = ({ formik, codesState, isRequestPending }) => {
+export const Layout = ({ formik, isRequestPending }) => {
 
     return(
         <MainForm onSubmit={formik.handleSubmit}>
-            {codesState.length
-            ?
-            <MainFormMessage>
-                {codesState?.map((el, idx) => <div key={idx}><span>{el}</span></div>)}
-            </MainFormMessage>
-            :
-            null}
             <InputNumber
                 label={'Сколько кодов сгенерировать'}
                 id={'codesQtt'}

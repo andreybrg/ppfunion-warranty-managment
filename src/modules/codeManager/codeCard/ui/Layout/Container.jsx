@@ -5,6 +5,7 @@ import { doCodeActivation } from '../../model'
 import { useDispatch, useSelector } from 'react-redux'
 import { MainPreloader } from 'modules/preloaders'
 import style from './Layout.module.sass'
+import { setNewMicroalert } from 'modules/alerts'
 
 export const Container = ({ codeId }) => {
 
@@ -24,6 +25,7 @@ export const Container = ({ codeId }) => {
 
     const handleCodeActivation = async (id) => {
         await dispatch(doCodeActivation({id}))
+        dispatch(setNewMicroalert({text: 'Статус кода успешно изменён'}))
     }
 
     if(!codeDataIsFetching && codeData) {

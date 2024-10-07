@@ -6,7 +6,9 @@ export const Layout = ({
     searchBy,
     onSearchInput,
     searchField,
-    onSubmit
+    onSubmit,
+    searchType,
+    onChangeSearchType,
 }) => {
 
     return(
@@ -19,6 +21,8 @@ export const Layout = ({
                     searchBy={searchBy}
                     onInput={onSearchInput}
                     inputValue={searchField}
+                    selectValue={searchType}
+                    onSelectChange={onChangeSearchType}
                     />
                 <input type="submit"/>
             </form>

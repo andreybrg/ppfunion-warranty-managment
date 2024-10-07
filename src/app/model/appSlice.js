@@ -8,7 +8,8 @@ const initialState = {
         isInit: false,
         appData: {
             codeStatuses: [],
-            wrappingTypes: []
+            wrappingTypes: [],
+            searchTypes: []
         }
     },
 
@@ -25,7 +26,8 @@ export const appInitialization = createAsyncThunk(
                 dispatch(setAppData(
                     {
                         codeStatuses: response.data.data.codeStatuses,
-                        wrappingTypes: response.data.data.wrappingTypes
+                        wrappingTypes: response.data.data.wrappingTypes,
+                        searchTypes: response.data.data.searchTypes
                     }   
                 ))
             } else {

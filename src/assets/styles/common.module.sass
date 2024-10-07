@@ -1,0 +1,24 @@
+@use 'assets/styles/mixins' as m
+
+.header
+    width: 100%
+    padding: 40px 0
+    &_fixed
+        padding: 60px 0
+    @include m.s900
+        padding: 55px 0
+        
+.main
+    width: 100%
+    padding: 0 0 50px 0
+    box-sizing: border-box
+
+.wrap
+    width: 100%
+    position: relative
+
+.container
+    width: calc(100% - 100px)
+    margin: 0 auto
+    @include m.s900
+        width: calc(100% - 40px)

@@ -14,6 +14,8 @@ export const InputSearch = ({
     formikSelectProps={},
     onInput,
     inputValue,
+    selectValue,
+    onSelectChange,
 }) => {
 
 
@@ -25,7 +27,7 @@ export const InputSearch = ({
                 ?
                 <div className={style.select}>
                     <div className={style.selectContainer}>
-                        <select name="" id="">
+                        <select name="" id="" value={selectValue} onChange={(event) => onSelectChange(event.target.value)}>
                         {searchBy.map(el =>
                             <option key={el.id} value={el.id}>{el.name}</option>
                         )}

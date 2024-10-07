@@ -9,8 +9,10 @@ const initialState = {
 
 export const setNewMicroalert = createAsyncThunk(
     'alert/setNewMicroalert',
-    async (data, {dispatch}) => {
-        dispatch(setMicroalert({text: data.text}))
+    async (data, {dispatch, getState}) => {
+        const microalerts = getState().alerts.microalerts.list
+        const newItemId = microalerts.length ? microalerts[microalerts.length-1].id+1 : 1
+        dispatch(setMicroalert({text: data.text, id: newItemId}))
         dispatch(delLastMicroalert())
     },
 )
@@ -29,7 +31,7 @@ const alertSlice = createSlice({
     initialState,
     reducers: {
         setMicroalert(state, action) {
-            state.microalerts.list.push({text: action.payload.text, id: state.microalerts.list.length})
+            state.microalerts.list.push({text: action.payload.text, id: action.payload.id})
         },
         removeLastMicroalert(state) {
             state.microalerts.list.shift()

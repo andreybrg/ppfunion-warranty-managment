@@ -1,4 +1,3 @@
-@use 'assets/styles/colors' as color
 @use 'assets/styles/mixins' as m
     
 .wrapper
@@ -16,20 +15,17 @@
     display: flex
     justify-content: center
     align-items: center
-    border: 3px solid color.$black-color
+    border: 3px solid var(--border-color)
     border-radius: 10px
 .code
-    @include m.fontInter(26px, color.$black-color, 500, 120%)
+    @include m.fontInter(26px, var(--text-color), 500, 120%)
 
 @media print
     @page
         margin: 0
         size: A4
     body
-        // width: 21cm
-        // height: 29.7cm
         margin: 30mm 45mm 30mm 45mm
-        /* change the margins as you want them to be. */
     header
         display: none
 

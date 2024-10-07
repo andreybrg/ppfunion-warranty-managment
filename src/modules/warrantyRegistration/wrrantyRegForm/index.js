@@ -1,0 +1,1 @@
+export { Container as WarrantyRegForm } from './ui/Layout/Container'

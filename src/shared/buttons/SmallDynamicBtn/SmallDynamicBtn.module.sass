@@ -1,6 +1,4 @@
-@use 'assets/styles/colors' as color
 @use 'assets/styles/mixins' as m
-@use 'assets/styles/functions' as f
     
 .btn
     outline: none
@@ -16,25 +14,26 @@
         opacity: .3
     &:hover
         .container
-            border-color: color.$black-color
+            border-color: var(--border-color)
             transition: .2s
     &_active
         .container
-            border-color: color.$theme-color
-            background-color: color.$theme-color
+            border-color: var(--theme-color)
+            background-color: var(--theme-color)
             span
-                color: color.$white-color
+                color: var(--theme-inner-color)
 
 .container
     padding: 7px 10px
     box-sizing: border-box
     width: fit-content
     height: fit-content
-    border: 1px solid f.HEXtoRGBA(color.$black-color, .5)
+    border: 1px solid rgba(var(--rgb-text-color), .5)
+    background-color: var(--button-bg-color)
     border-radius: 5px
     display: flex
     justify-content: center
     align-items: center
     transition: .2s
     span
-        @include m.fontInter(13px, color.$black-color, 500, 120%)
+        @include m.fontInter(13px, var(--text-color), 500, 120%)
