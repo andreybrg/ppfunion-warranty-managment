@@ -6,10 +6,11 @@ import { MicroAlert } from "modules/alerts"
 import cn from "classnames"
 
 export const Layout = ({
+    themeData
 }) => {
 
     return(
-        <div className={cn(style.app, style.mainTheme)}>
+        <div className={cn(style.app, style[themeData.theme])}>
             <Outlet/>
             <ModalsModule/>
             <MicroAlert/>

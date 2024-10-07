@@ -13,9 +13,6 @@ export const codeListAPI = createApi({
                 queryUrl += data.status?`&status=${data.status}`:``
                 queryUrl += data.searchType?`&searchType=${data.searchType}`:``
                 queryUrl += data.searchQuery?`&searchQuery=${data.searchQuery}`:``
-                
-                console.log(queryUrl)
-
                 return {
                     url: queryUrl,
                     validateStatus: (response, result) =>

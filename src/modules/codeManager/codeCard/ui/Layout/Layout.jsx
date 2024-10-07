@@ -29,7 +29,7 @@ export const Layout = ({ data, codeId, activateCode, isCodeActivationPending }) 
                 <div className={style.btns}>
                     <SecondBtn 
                         icon={printSvg}
-                        to={`/qr/${data.code.code}`}
+                        to={`/panel/qr/${data.code.code}`}
                         newTab={true}
                         >
                         Распечатать

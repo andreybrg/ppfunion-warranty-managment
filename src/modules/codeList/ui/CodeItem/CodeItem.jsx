@@ -36,7 +36,7 @@ export const CodeItem = ({ item }) => {
                     item.status === 1
                     ?
                     <Link 
-                        to={`/qr/${item.code}`} 
+                        to={`/panel/qr/${item.code}`} 
                         target='_blank' 
                         className={style.printBtn} 
                         type="button"
