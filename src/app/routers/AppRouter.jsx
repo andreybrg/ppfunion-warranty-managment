@@ -1,5 +1,5 @@
 import { Layout } from 'app/layout'
-import { CodeQRGenerationModule } from 'modules/codeGenerator/codeQRGeneration'
+import { CodeQRGenerationModule } from 'modules/codeGenerator'
 import { Panel } from 'pages/panel'
 import { WarrantyRegistration } from 'pages/wrrantyRegistration'
 import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom'
@@ -9,7 +9,8 @@ export const AppRouter = () => {
         <BrowserRouter>
             <Routes>
                 <Route psth={'/'} element={<Layout/>}>
-                    <Route path={'panel'} element={<Panel/>}>
+                    <Route path={'panel'}>
+                        <Route index element={<Panel/>}/>
                         <Route path={'qr/:code'} element={<CodeQRGenerationModule/>}/>
                     </Route>
                     <Route path={'register'} element={<WarrantyRegistration/>}>
