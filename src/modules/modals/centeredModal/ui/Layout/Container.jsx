@@ -18,6 +18,7 @@ export const Container = ({ children, modalTitle }) => {
     }
     
     useEffect(() => {
+        resizeListener()
         window.addEventListener('resize', resizeListener)
         return () => {
             window.removeEventListener('resize', resizeListener)
