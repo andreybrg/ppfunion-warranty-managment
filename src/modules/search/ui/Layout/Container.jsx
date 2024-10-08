@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Layout } from './Layout'
-import { setSearchType, setSearchValue } from 'modules/search/model'
+import { setSearchType, setSearchValue, toggleOnMobileOpened } from 'modules/search/model'
 import { useDispatch, useSelector } from 'react-redux'
 
 export const Container = () => {
@@ -21,10 +21,17 @@ export const Container = () => {
         e.preventDefault()
         dispatch(setSearchValue({value: searchField}))
         dispatch(setSearchType({value: searchTypeField}))
+        dispatch(toggleOnMobileOpened())
     }    
 
     const onChangeSearchType = (val) => {
         setSearchTypeField(prev=>val)
+    }
+
+    const onSearchOutsideClick = (e) => {
+        if(!e.target.closest('[data-search]')) {
+            dispatch(toggleOnMobileOpened())
+        }
     }
 
     useEffect(() => {
@@ -34,12 +41,14 @@ export const Container = () => {
     
     return(
         <Layout
+            isOnMobileOpened={searchData.isOnMobileOpened}
             searchBy={searchTypes}
             onSearchInput={onSearchInput}
             searchField={searchField}
             onSubmit={onSearchSubmit}
             searchType={searchTypeField}
             onChangeSearchType={onChangeSearchType}
+            onSearchOutsideClick={onSearchOutsideClick}
             />
     )
 }

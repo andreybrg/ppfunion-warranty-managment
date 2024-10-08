@@ -11,9 +11,9 @@ export const Layout = ({ searchValue, resetSearchQuery }) => {
             <div className={style.chips}>
                 {searchValue
                     ? 
-                    <div className={style.chipItem}>
+                    <div onClick={() => resetSearchQuery()} className={style.chipItem}>
                         Поиск: {searchValue}
-                        <div onClick={() => resetSearchQuery()} className={style.resetChip}></div>
+                        <div className={style.resetChip}></div>
                     </div> 
                     : null}
             </div>
