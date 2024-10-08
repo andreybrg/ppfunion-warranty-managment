@@ -9,7 +9,7 @@ export const Layout = ({ code }) => {
         <div className={style.wrapper}>
             <div className={style.qrcode}>
                 <QRCodeCanvas 
-                    value={`${CODE_REGISTER_PAGE_URL}/${code}`}
+                    value={`${CODE_REGISTER_PAGE_URL}${code}`}
                     size={300}
                     />
             </div>
