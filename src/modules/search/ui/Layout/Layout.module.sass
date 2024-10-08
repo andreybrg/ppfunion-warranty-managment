@@ -1,6 +1,17 @@
-
+@use 'assets/styles/mixins' as m
 
 .search
     width: 400px
+    @include m.s900
+        display: none
+        position: fixed
+        left: 0
+        top: 0
+        width: 100%
+        padding: 20px
+        box-sizing: border-box
+        background-color: rgba(0, 0, 0, .5)
+        z-index: 5
+        height: 100%
     input[type="submit"]
         display: none

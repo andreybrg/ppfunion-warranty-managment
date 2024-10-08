@@ -1,3 +1,5 @@
+@use 'assets/styles/mixins' as m
+
 .header
     display: flex
     align-items: center
@@ -6,7 +8,9 @@
 .logo
     height: 30px
     width: auto
+    @include m.s900
+        height: 24px
     svg
-        height: 30px
+        height: 100%
         path
             fill: var(--text-color)

@@ -20,7 +20,7 @@ export const Layout = ({ data, codeId, activateCode, isCodeActivationPending }) 
             </div>
             <div className={style.info}>{statusInfos[data.code.status]}</div>
             <Content
-                registrationData={data.registrationData}
+                data={data}
                 status={data.code.status}
                 />
             {

@@ -1,6 +1,8 @@
 export const BASE_API_URL = 'https://sivkovdemo.ru/ppfunionapi/'
 export const CODE_REGISTER_PAGE_URL = 'https://sivkovdemo.ru/demo-ppfunion/ragistration'
+export const IMAGES_DIRECTORY = 'https://sivkovdemo.ru/ppfunionapi/storage/images/'
 
+export const PHOTO_LIMIT_ON_CODE_REGISTER = 10
 export const CODE_QUERY_PAGE_LIMIT = 1000
 export const CODE_STATUS_NAMES = {
     '1': 'status_new',

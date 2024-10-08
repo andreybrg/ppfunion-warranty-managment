@@ -7,9 +7,6 @@ import { MainBtn } from 'shared/buttons'
 export const Layout = ({ code }) => {
     return(
         <div className={style.wrapper}>
-            <MainBtn onClick={() => window.print()}>
-                Перейти к печати
-            </MainBtn>
             <div className={style.qrcode}>
                 <QRCodeCanvas 
                     value={`${CODE_REGISTER_PAGE_URL}/${code}`}
@@ -19,6 +16,9 @@ export const Layout = ({ code }) => {
             <div className={style.code}>
                 {code}
             </div>
+            <MainBtn onClick={() => window.print()}>
+                Перейти к печати
+            </MainBtn>
         </div>
     )
 }

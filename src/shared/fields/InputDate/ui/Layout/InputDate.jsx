@@ -17,7 +17,7 @@ export const InputDate = ({
             <div className={style.title}>{label}</div>
             <input
                 {...formikFieldProps}
-                placeholder={"Enter the needed date"} 
+                placeholder={placeholder} 
                 type={'date'}
                 max="3000-01-01"
                 />

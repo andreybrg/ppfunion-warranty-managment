@@ -1,0 +1,47 @@
+@use 'assets/styles/mixins' as m
+
+.imageContainer
+    width: 50%
+    padding: 0 10px 10px 0
+    box-sizing: border-box
+    @include m.s900
+        width: 100%
+.image
+    width: 100%
+    position: relative
+    padding-top: 100%
+    border-radius: 5px
+    background-color: rgba(var(--rgb-border-color), .15)
+    overflow: hidden
+    &::before
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        width: 40%
+        height: 100%
+        background: linear-gradient(to right, transparent 0%, rgba(var(--rgb-loader-gradient-color), .4) 50%, transparent 100%)
+        animation: load .5s cubic-bezier(.4, .0, .2, .1) infinite
+    img
+        width: 100%
+        height: 100%
+        position: absolute
+        left: 0
+        top: 0
+        object-fit: cover
+        border-radius: 5px
+        opacity: 0
+        transition: .2s
+    &Loaded
+        &::before
+            background: unset
+            animation: none
+        img
+            opacity: 1
+            transition: .2s
+
+@keyframes load
+    from
+        left: -250px
+    to
+        left: 100%

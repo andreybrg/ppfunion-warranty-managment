@@ -4,7 +4,7 @@ import { ReactComponent as StockToReg } from 'assets/images/stock_to_reg.svg'
 import { RegisteredData } from "../RegisteredData/RegisteredData"
 import style from './Content.module.sass'
 
-export const Content = ({ registrationData, status }) => {
+export const Content = ({ data, status }) => {
 
     if(status === 1) {
         return(
@@ -24,7 +24,7 @@ export const Content = ({ registrationData, status }) => {
 
     if(status === 3) {
         return(
-            <RegisteredData data={registrationData}/>
+            <RegisteredData data={data}/>
         )
     }
 }

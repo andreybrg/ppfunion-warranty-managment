@@ -1,5 +1,9 @@
+@use 'assets/styles/mixins' as m
+
 .controls
     display: flex
     align-items: center
     column-gap: 25px
     margin: 0 0 0 auto
+    @include m.s900
+        column-gap: 20px

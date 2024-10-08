@@ -6,6 +6,8 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { toBase64 } from 'shared/utils/toBase64'
 import { registerCode } from 'modules/warrantyRegistration'
+import { PHOTO_LIMIT_ON_CODE_REGISTER } from 'shared/utils/constants'
+import { setNewMicroalert } from 'modules/alerts'
 
 export const Container = () => {
 
@@ -19,9 +21,23 @@ export const Container = () => {
     const [photoRenderedFiles, setPhotoRenderedFiles] = useState([])
 
     const onChangePhotoFilesInput = (e) => {
+
+        const inputFiles = {...e.target.files}
+        const resultFilesLength = photoFiles.length + Object.values(inputFiles).length
+
+        if(photoFiles.length === PHOTO_LIMIT_ON_CODE_REGISTER) {
+            dispatch(setNewMicroalert({text: 'Достигнуто максимальное число загруженных фотографий. Удалите предыдущие, чтобы добавить новые.'}))
+            return
+        }
+
+        if(resultFilesLength > PHOTO_LIMIT_ON_CODE_REGISTER) {
+            dispatch(setNewMicroalert({text: `Вы хотите загрузить больше фотографий, чем возможно. Можно загрузить только ${PHOTO_LIMIT_ON_CODE_REGISTER} фотографий.`}))
+            return
+        }
+
         setPhotoFiles(prev => {
             const newFiles = []
-            Object.values(e.target.files).forEach((val)=>{
+            Object.values(inputFiles).forEach((val)=>{
                 newFiles.push(val)
             })
             return [
