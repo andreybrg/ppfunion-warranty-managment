@@ -19,6 +19,14 @@ const initialState = {
     },
 }
 
+export const logOut = createAsyncThunk(
+    'app/logOut',
+    async (_, {dispatch}) => {
+        localStorage.removeItem('Ya.Oauth.Sdk.Token')
+        dispatch(setAuthData({data: {isAuth: false, data: null}}))
+    }
+)
+
 export const checkAuthorization = createAsyncThunk(
     'app/checkAuthorization',
     async (data={}, {dispatch}) => {

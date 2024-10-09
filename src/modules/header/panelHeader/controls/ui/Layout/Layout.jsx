@@ -5,7 +5,7 @@ import { Notification } from '../../notification'
 import { SearchBtn } from 'modules/search'
 import cn from 'classnames'
 
-export const Layout = ({ isAuth }) => {
+export const Layout = ({ isAuth, onLogOut }) => {
 
     return(
         <div className={style.controls}>
@@ -23,7 +23,7 @@ export const Layout = ({ isAuth }) => {
                     <Notification/>
                 </div>
                 <div className={style.item}>
-                    <LogOut/>
+                    <LogOut onLogOut={onLogOut}/>
                 </div>
             </>
             :
