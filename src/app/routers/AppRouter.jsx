@@ -13,8 +13,8 @@ export const AppRouter = () => {
             <Routes>
                 <Route path={'/'} element={<Layout/>}>
                     <Route index element={<AuthorizedRoute><Index/></AuthorizedRoute>}/>
-                    {/* <Route path={'panel'} element={<ProtectedRoute/>}> */}
-                    <Route path={'panel'}>
+                    <Route path={'panel'} element={<ProtectedRoute/>}>
+                    {/* <Route path={'panel'}> */}
                         <Route index element={<Panel/>}/>
                         <Route path={'qr/:code'} element={<CodeQRGenerationModule/>}/>
                     </Route>
