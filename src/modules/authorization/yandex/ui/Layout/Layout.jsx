@@ -12,7 +12,7 @@ export const Layout = () => {
         debugger
         console.log('respdata', resp)
         if(!resp.isError) {
-            dispatch(checkAuthorization())
+            dispatch(checkAuthorization(resp.data.access_token))
         }
     }, [])
     
