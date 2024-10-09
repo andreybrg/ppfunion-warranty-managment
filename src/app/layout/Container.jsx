@@ -7,10 +7,15 @@ export const Container = ({ }) => {
     const themeData = {
         theme: 'mainTheme'
     }
+    
+    const mainThemeRoutes = [
+        'panel',
+        'auth'
+    ]
 
     const href = useHref()
 
-    if(href.split('/')[1] !== 'panel') themeData.theme = 'brandTheme'
+    if(!mainThemeRoutes.includes(href.split('/')[1])) themeData.theme = 'brandTheme'
 
     return(
         <Layout

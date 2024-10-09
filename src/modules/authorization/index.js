@@ -1,0 +1,1 @@
+export { YandexAuthModule } from './yandex'

@@ -1,0 +1,1 @@
+export { yandexAuthSuggest } from './yandex'
