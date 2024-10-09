@@ -1,4 +1,6 @@
-export const yandexAuthSuggest = () => {
+export const yandexAuthSuggest = async () => {
+
+
     window.YaAuthSuggest.init(
         {
             client_id: "f654f08187754187b2f364fd0b4eeafe",
@@ -18,7 +20,17 @@ export const yandexAuthSuggest = () => {
     )
     .then(({handler}) => handler())
     .then(data => {
-        console.log('Auth succ')
-    })
-    .catch(error => console.log('Ошибка', error))
+            return {
+                data: data,
+                isError: 0,
+            }
+        }
+    )
+    .catch(error => {
+        return {
+            data: error,
+            isError: 1,
+        }
+    }
+)
 }
