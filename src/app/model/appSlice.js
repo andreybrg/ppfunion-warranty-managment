@@ -8,7 +8,7 @@ const initialState = {
     data: {
         isInit: false,
         authData: {
-            isAuth: false,
+            isAuth: true,
             data: null
         },
         appData: {
@@ -26,17 +26,18 @@ export const checkAuthorization = createAsyncThunk(
             const token = localStorage.getItem('Ya.Oauth.Sdk.Token')
             if(token) {
                 const authResp = await dispatch(authorizationAPI.endpoints.getAuthData.initiate({token: token}))
+                if(authResp.error.status === 401) {
+                    console.log('unauthorized 401')
+                }
                 console.log(authResp)
                 if(authResp.isSuccess) {
-                    setAuthData({isAuth: true, data: authResp.data})
+                    dispatch(setAuthData({data: {isAuth: true, data: authResp.data}}))
                 }
             } else {
-                setAuthData({isAuth: false, data: null})
+                dispatch(setAuthData({data: {isAuth: false, data: null}}))
             }
         } catch (error) {
-            console.log('Ошибка которую получили', error)
-            setAuthData({isAuth: false, data: null})
-            // error.status
+            dispatch(setAuthData({data: {isAuth: false, data: null}}))
         }
     }
 )
@@ -59,15 +60,13 @@ export const appInitialization = createAsyncThunk(
                     }   
                 ))
             } else {
-                
                 throw Error('Error')
             }
             
             dispatch(setAppInit())
 
         } catch (error) {
-            console.log('Получили ошибку', error)
-            throw Error(error)
+            throw Error('Error')
         }
     }
 )
@@ -83,7 +82,7 @@ const appSlice = createSlice({
             state.data.appData = action.payload
         },
         setAuthData(state, action) {
-            state.data.authData = action.payload
+            state.data.authData = action.payload.data
         }
     }
 })

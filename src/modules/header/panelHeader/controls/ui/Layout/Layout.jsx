@@ -5,23 +5,29 @@ import { Notification } from '../../notification'
 import { SearchBtn } from 'modules/search'
 import cn from 'classnames'
 
-export const Layout = () => {
+export const Layout = ({ isAuth }) => {
+
     return(
         <div className={style.controls}>
 
-            <div className={cn(
-                style.item,
-                style.onMobile
-            )}>
-                <SearchBtn/>
-            </div>
-            <div className={style.item}>
-                <Notification/>
-            </div>
-            <div className={style.item}>
-                <LogOut/>
-            </div>
-            
+            {isAuth
+            ?
+            <>
+                <div className={cn(
+                    style.item,
+                    style.onMobile
+                )}>
+                    <SearchBtn/>
+                </div>
+                <div className={style.item}>
+                    <Notification/>
+                </div>
+                <div className={style.item}>
+                    <LogOut/>
+                </div>
+            </>
+            :
+            null}
         </div>
     )
 }

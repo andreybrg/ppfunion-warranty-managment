@@ -1,8 +1,10 @@
 import React from 'react'
 import { Layout } from './Layout'
+import { withAuth } from 'shared/hoc'
 
 export const Container = () => {
-    return(
-        <Layout/>
-    )
+
+    const LayoutWithAuth = withAuth(Layout)
+
+    return <LayoutWithAuth/>
 }

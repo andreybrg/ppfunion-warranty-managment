@@ -1,0 +1,43 @@
+@use 'assets/styles/mixins' as m
+
+.page
+    width: 100%
+    height: 100%
+    min-height: 100vh
+    position: relative
+    z-index: 1
+
+.pageBackGround
+    position: fixed
+    top: 0
+    left: 0
+    height: 100vh
+    width: 50%
+    z-index: 0
+    background-color: var(--text-color)
+    display: flex
+    justify-content: center
+    align-items: center
+
+.form
+    display: flex
+    flex-direction: column
+    width: 350px
+    height: fit-content
+    row-gap: 30px
+    
+.title
+    @include m.fontInter(20px, var(--text-color), 500, 120%)
+.formContainer
+    width: 50%
+    position: absolute
+    right: 0
+    top: 0
+    bottom: 0
+    left: auto
+    margin: auto
+    display: flex
+    justify-content: center
+    align-items: center
+.authBtn
+    width: 100%

@@ -8,7 +8,7 @@ export const yandexAuthSuggest = () => {
           "https://w.ppfunion.com/auth/token",
           {
             view: "button",
-            parentId: "buttonContainerId",
+            parentId: "auth-ya-btn",
             buttonSize: 'l',
             buttonView: 'main',
             buttonTheme: 'light',
@@ -18,7 +18,7 @@ export const yandexAuthSuggest = () => {
     )
     .then(({handler}) => handler())
     .then(data => {
-        console.log('Auth succ', data)
+        console.log('Auth succ')
     })
-    .catch(error => console.log('Обработка ошибки', error))
+    .catch(error => console.log('Ошибка', error))
 }

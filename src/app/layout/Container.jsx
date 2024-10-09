@@ -15,7 +15,9 @@ export const Container = ({ }) => {
 
     const href = useHref()
 
-    if(!mainThemeRoutes.includes(href.split('/')[1])) themeData.theme = 'brandTheme'
+    const splittedHref = href.split('/')
+
+    if(!mainThemeRoutes.includes(splittedHref[1]) && splittedHref[1]) themeData.theme = 'brandTheme'
 
     return(
         <Layout

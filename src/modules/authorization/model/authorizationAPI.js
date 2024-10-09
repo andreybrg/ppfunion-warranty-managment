@@ -12,8 +12,6 @@ export const authorizationAPI = createApi({
                     Authorization: `OAuth ${token}`
                 },
                 keepUnusedDataFor: 5,
-                // validateStatus: (response, result) =>
-                    // response.status === 200 && !result.error
             }),
         }),
     }),
