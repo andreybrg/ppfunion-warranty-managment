@@ -8,7 +8,7 @@ export const ProtectedRoute = ({ children }) => {
     
     if(!isAuthorized) {
         return(
-            <Navigate to={'/auth/signin'}/>
+            <Navigate to={'/'}/>
         )
     } else {
         return(
