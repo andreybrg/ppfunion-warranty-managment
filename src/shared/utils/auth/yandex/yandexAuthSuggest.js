@@ -18,7 +18,7 @@ export const yandexAuthSuggest = () => {
     )
     .then(({handler}) => handler())
     .then(data => {
-        localStorage.setItem('authToken', data.access_token)
+        console.log('Auth succ', data)
     })
     .catch(error => console.log('Обработка ошибки', error))
 }

@@ -17,31 +17,38 @@ const initialState = {
             searchTypes: []
         }
     },
-
 }
+
+export const checkAuthorization = createAsyncThunk(
+    'app/checkAuthorization',
+    async (_, {dispatch}) => {
+        try{
+            const token = localStorage.getItem('Ya.Oauth.Sdk.Token')
+            if(token) {
+                const authResp = await dispatch(authorizationAPI.endpoints.getAuthData.initiate({token: token}))
+                console.log(authResp)
+                if(authResp.isSuccess) {
+                    setAuthData({isAuth: true, data: authResp.data})
+                }
+            } else {
+                setAuthData({isAuth: false, data: null})
+            }
+        } catch (error) {
+            console.log('Ошибка которую получили', error)
+            setAuthData({isAuth: false, data: null})
+            // error.status
+        }
+    }
+)
 
 export const appInitialization = createAsyncThunk(
     'app/appInitialization',
     async (_, {dispatch}) => {
         try{
+
             const response = await dispatch(appAPI.endpoints.getAppData.initiate())
             await dispatch(getCodesWithStatusNew())
-            const token = localStorage.getItem('authToken')
-            if(token) {
-                const authResp = await dispatch(authorizationAPI.endpoints.getAuthData.initiate({token: token}))
-                if(authResp.isSuccess) {
-                    setAuthData({isAuth: true, data: authResp.data})
-                } else {
-                    localStorage.removeItem('authToken')
-                    setAuthData({isAuth: false, data: null})
-                }
-            } else {
-                console.log('Не авторизован')
-                setAuthData({isAuth: false, data: null})
-            }
-            // Найти токен и сделать запрос если он есть
-            //     Если ответ положительный, установить true
-            //     Если токен не найден установить false
+            await dispatch(checkAuthorization())
 
             if(!response.error) {
                 dispatch(setAppData(
@@ -52,12 +59,14 @@ export const appInitialization = createAsyncThunk(
                     }   
                 ))
             } else {
+                
                 throw Error('Error')
             }
             
             dispatch(setAppInit())
 
         } catch (error) {
+            console.log('Получили ошибку', error)
             throw Error(error)
         }
     }
