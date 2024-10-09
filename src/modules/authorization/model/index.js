@@ -1,0 +1,1 @@
+export { authorizationAPI } from './authorizationAPI'
