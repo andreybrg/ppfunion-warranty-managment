@@ -11,7 +11,7 @@ export const AppRouter = () => {
     return(
         <BrowserRouter>
             <Routes>
-                <Route psth={'/'} element={<Layout/>}>
+                <Route path={'/'} element={<Layout/>}>
                     <Route index element={<AuthorizedRoute><Index/></AuthorizedRoute>}/>
                     <Route path={'panel'} element={<ProtectedRoute/>}>
                         <Route index element={<Panel/>}/>
