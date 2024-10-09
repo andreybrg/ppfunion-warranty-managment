@@ -2,9 +2,11 @@ import React, { useEffect } from 'react'
 
 export const SuggestToken = () => {
 
-    window.YaSendSuggestToken('https://w.ppfunion.com/auth/signin')
+    console.log('look at window', window)
+    const resp = window.YaSendSuggestToken('https://w.ppfunion.com/auth/signin')
+    console.log(resp)
 
-    useEffect(()=> {
+    // useEffect(()=> {
         // if(!document.getElementById("suggest-token-ya")) {
         //     const head = document.getElementsByTagName('head')[0]
         //     const script = document.createElement('script')
@@ -20,7 +22,7 @@ export const SuggestToken = () => {
         //     const toRemove = document.getElementById("suggest-token-ya")
         //     toRemove.remove()
         // }
-    }, [])
+    // }, [])
     return(
         <></>
     )
