@@ -9,6 +9,7 @@ const initialState = {
         isInit: false,
         authData: {
             isAuth: false,
+            data: null
         },
         appData: {
             codeStatuses: [],
@@ -28,11 +29,15 @@ export const appInitialization = createAsyncThunk(
             const token = localStorage.getItem('authToken')
             if(token) {
                 const authResp = await dispatch(authorizationAPI.endpoints.getAuthData.initiate({token: token}))
-                console.log(authResp)
-                setAuthData({isAuth: true})
+                if(authResp.isSuccess) {
+                    setAuthData({isAuth: true, data: authResp.data})
+                } else {
+                    localStorage.removeItem('authToken')
+                    setAuthData({isAuth: false, data: null})
+                }
             } else {
                 console.log('Не авторизован')
-                setAuthData({isAuth: false})
+                setAuthData({isAuth: false, data: null})
             }
             // Найти токен и сделать запрос если он есть
             //     Если ответ положительный, установить true

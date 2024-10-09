@@ -2,12 +2,12 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const authorizationAPI = createApi({
     reducerPath: 'authorizationAPI',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://login.yandex.ru/info?&format=json' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://login.yandex.ru/' }),
     endpoints: (builder) => ({
         // Получить данные для приложения
         getAuthData: builder.query({
             query: ({ token }) => ({
-                url: `app/get/appdata`,
+                url: `info?&format=json`,
                 headers: {
                     Authorization: `OAuth ${token}`
                 },
