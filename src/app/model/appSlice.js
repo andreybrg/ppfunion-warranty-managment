@@ -25,7 +25,7 @@ export const checkAuthorization = createAsyncThunk(
         try{
             const authToken = data.token ? data.token : localStorage.getItem('Ya.Oauth.Sdk.Token')
             if(authToken) {
-                const authResp = await dispatch(authorizationAPI.endpoints.getAuthData.initiate({token: token}))
+                const authResp = await dispatch(authorizationAPI.endpoints.getAuthData.initiate({token: authToken}))
                 if(!authResp.error && authResp.isSuccess) {
                     dispatch(setAuthData({data: {isAuth: true, data: authResp.data}}))
                 } else {
