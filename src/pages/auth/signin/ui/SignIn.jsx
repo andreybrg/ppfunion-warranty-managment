@@ -15,7 +15,7 @@ export const SignIn = () => {
             </header>
             <main className={commonStyle.main}>
                 <div className={commonStyle.wrap}>
-                    <div className={commonStyle.container}>
+                    <div className={commonStyle.container} id='buttonContainerId'>
                         <YandexAuthModule/>
                     </div>
                 </div>

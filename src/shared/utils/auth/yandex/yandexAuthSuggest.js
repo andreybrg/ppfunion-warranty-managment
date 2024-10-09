@@ -5,7 +5,7 @@ export const yandexAuthSuggest = () => {
             response_type: "token",
             redirect_uri: "https://w.ppfunion.com/auth/token"
           },
-          "https://w.ppfunion.com",
+          "https://w.ppfunion.com/auth/token",
           {
             view: "button",
             parentId: "buttonContainerId",
