@@ -18,6 +18,8 @@
     display: flex
     justify-content: center
     align-items: center
+    @include m.s900
+        display: none
 
 .form
     display: flex
@@ -25,6 +27,8 @@
     width: 350px
     height: fit-content
     row-gap: 30px
+    @include m.s900
+        width: 100%
     
 .title
     @include m.fontInter(20px, var(--text-color), 500, 120%)
@@ -39,5 +43,8 @@
     display: flex
     justify-content: center
     align-items: center
+    @include m.s900
+        width: calc(100% - 40px)
+        left: 0
 .authBtn
     width: 100%
