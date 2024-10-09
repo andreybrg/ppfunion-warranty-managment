@@ -1,7 +1,6 @@
 export const yandexAuthSuggest = async () => {
 
-
-    window.YaAuthSuggest.init(
+    return window.YaAuthSuggest.init(
         {
             client_id: "f654f08187754187b2f364fd0b4eeafe",
             response_type: "token",
