@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Navigate } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 
 export const AuthorizedRoute = ({ children }) => {
 
@@ -12,7 +12,7 @@ export const AuthorizedRoute = ({ children }) => {
         )
     } else {
         return(
-            children
+            children?children:<Outlet/>
         )
     }
 }
