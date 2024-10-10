@@ -13,9 +13,17 @@ export const appAPI = createApi({
                     response.status === 200 && !result.error
             }),
         }),
+        checkUserRights: builder.query({
+            query: ({uid}) => ({
+                url: `app/get/rights/${uid}`,
+                validateStatus: (response, result) =>
+                    response.status === 200 && !result.error
+            }),
+        }),
     }),
 })
 
 export const { 
     useGetAppDataQuery,
+    useCheckUserRightsQuery
 } = appAPI

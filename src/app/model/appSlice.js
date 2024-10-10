@@ -9,7 +9,8 @@ const initialState = {
         isInit: false,
         authData: {
             isAuth: false,
-            data: null
+            data: null,
+            access: false
         },
         appData: {
             codeStatuses: [],
@@ -24,6 +25,21 @@ export const logOut = createAsyncThunk(
     async (_, {dispatch}) => {
         localStorage.removeItem('Ya.Oauth.Sdk.Token')
         dispatch(setAuthData({data: {isAuth: false, data: null}}))
+    }
+)
+
+export const checkRights = createAsyncThunk(
+    'app/checkRights',
+    async (data, {dispatch}) => {
+        try{
+            if(data.uid) {
+                const response = await dispatch(appAPI.endpoints.checkUserRights.initiate({uid: data.uid}))
+                console.log(response.data)
+                dispatch(setAccess({access: response.data.access}))
+            }
+        } catch (error) {
+            console.log('app/checkRights error', error)
+        }
     }
 )
 
@@ -51,12 +67,19 @@ export const checkAuthorization = createAsyncThunk(
 
 export const appInitialization = createAsyncThunk(
     'app/appInitialization',
-    async (_, {dispatch}) => {
+    async (_, {dispatch, getState}) => {
         try{
 
             const response = await dispatch(appAPI.endpoints.getAppData.initiate())
             await dispatch(getCodesWithStatusNew())
             await dispatch(checkAuthorization())
+
+            const authData = getState().app.data.authData
+            if(authData.isAuth) {
+                const a = authData.data
+                debugger
+                // await dispatch(checkRights({uid: authData.data.id}))
+            }
 
             if(!response.error) {
                 dispatch(setAppData(
@@ -89,10 +112,14 @@ const appSlice = createSlice({
             state.data.appData = action.payload
         },
         setAuthData(state, action) {
-            state.data.authData = action.payload.data
+            state.data.authData.data = action.payload.data.data
+            state.data.authData.isAuth = action.payload.data.isAuth
+        },
+        setAccess(state, action) {
+            state.data.authData.access = action.payload.access
         }
     }
 })
 
-export const { setAppInit, setAppData, setAuthData } = appSlice.actions
+export const { setAppInit, setAppData, setAuthData, setAccess } = appSlice.actions
 export default appSlice.reducer

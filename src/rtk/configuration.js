@@ -46,5 +46,3 @@ const store = configureStore({
 })
 
 export default store
-
-window.reduxStore = store
