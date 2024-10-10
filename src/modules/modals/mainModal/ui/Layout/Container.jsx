@@ -1,7 +1,6 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext } from "react"
 import { Layout } from "./Layout"
 import { ModalsContext } from "modules/modals/context"
-import { resizeListener } from "shared/utils/resizeListener"
 
 export const Container = ({ children, modalTitle }) => {
 
@@ -17,14 +16,6 @@ export const Container = ({ children, modalTitle }) => {
         }
     }
 
-    // useEffect(() => {
-    //     resizeListener()
-    //     window.addEventListener('resize', resizeListener)
-    //     return () => {
-    //         window.removeEventListener('resize', resizeListener)
-    //     }
-    // }, [])
-    
     return(
         <Layout
             closeModal={closeModal}
