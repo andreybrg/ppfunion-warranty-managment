@@ -10,12 +10,13 @@ export const Container = () => {
 
     const searchValue = useSelector(store => store.search.searchValue)
     const access = useSelector(store => store.app.data.authData.access)
+    const isPanelInit = useSelector(store => store.panel.isInit)
 
     const resetSearchQuery = () => {
         dispatch(resetSearchValue())
     }
 
-    if(access) {
+    if(access && isPanelInit) {
         return(
             <Layout
                 searchValue={searchValue}
