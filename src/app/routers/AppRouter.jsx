@@ -6,6 +6,7 @@ import { Index } from 'pages/index'
 import { Panel } from 'pages/panel'
 import { WarrantyRegistration } from 'pages/wrrantyRegistration'
 import { AuthorizedRoute, ProtectedRoute } from 'shared/routes'
+import { AccessDenied } from 'pages/accessDenied'
 
 export const AppRouter = () => {
     return(
@@ -25,6 +26,7 @@ export const AppRouter = () => {
                     <Route path={'auth'}>
                         <Route path={'token'} element={<SuggestToken/>}/>
                     </Route>
+                    <Route path={'access-denied'} element={<AuthorizedRoute><AccessDenied/></AuthorizedRoute>}/>
                 </Route>
             </Routes>
         </BrowserRouter>

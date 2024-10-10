@@ -52,6 +52,7 @@ export const checkAuthorization = createAsyncThunk(
                 const authResp = await dispatch(authorizationAPI.endpoints.getAuthData.initiate({token: authToken}))
                 if(!authResp.error && authResp.isSuccess) {
                     dispatch(setAuthData({data: {isAuth: true, data: authResp.data}}))
+                    await dispatch(checkRights({uid: authResp.data.id}))
                 } else {
                     console.log('error auth', authResp.error)
                     dispatch(setAuthData({data: {isAuth: false, data: null}}))

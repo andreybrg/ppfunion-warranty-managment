@@ -10,7 +10,8 @@ export const Container = ({ }) => {
     
     const mainThemeRoutes = [
         'panel',
-        'auth'
+        'auth',
+        'access-denied'
     ]
 
     const href = useHref()
