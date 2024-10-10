@@ -34,7 +34,7 @@ export const AccessDenied = () => {
                     <div className={commonStyle.container}>
                         <div className={style.accessDenied}>
                             Доступ запрещён
-                            {isAuth
+                            {!isAuth
                             ?
                             <>
                                 <SecondBtn onClick={() => onLogOut()}>

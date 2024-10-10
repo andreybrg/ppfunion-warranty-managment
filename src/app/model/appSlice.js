@@ -31,7 +31,10 @@ export const accessRequest = createAsyncThunk(
     'app/accessRequest',
     async (_, {dispatch, getState}) => {
         const authData = getState().app.data.authData
-        await dispatch(appAPI.endpoints.accessRequest.initiate({id: authData.data.id, email: authData.data.default_email}))
+        // const resp = await dispatch(appAPI.endpoints.accessRequest.initiate({id: authData.data.id, email: authData.data.default_email}))
+        const resp = await dispatch(appAPI.endpoints.accessRequest.initiate({id: '1010101010', email: 'andrey@yandex.ru'}))
+        debugger
+        console.log(resp)
     }
 )
 
