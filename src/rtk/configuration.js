@@ -11,8 +11,6 @@ import { alertSlice } from "modules/alerts"
 import { searchSlice } from "modules/search"
 import { warrantyRegistrationAPI, warrantyRegistrationSlice } from "modules/warrantyRegistration"
 import { authorizationAPI } from "modules/authorization"
-import { panelSlice } from "modules/panel"
-
 
 const store = configureStore({
     reducer: {
@@ -26,7 +24,6 @@ const store = configureStore({
         alerts: alertSlice,
         search: searchSlice,
         warrantyRegistration: warrantyRegistrationSlice,
-        panel: panelSlice,
         [appAPI.reducerPath]: appAPI.reducer,
         [codeListAPI.reducerPath]: codeListAPI.reducer,
         [codeCardAPI.reducerPath]: codeCardAPI.reducer,

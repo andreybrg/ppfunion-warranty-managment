@@ -10,9 +10,6 @@ export const AppInitialization = ({ children }) => {
     const dispatch = useDispatch()
     const isAppInitialized = useSelector(store => store.app.data.isInit)
 
-    const allStoreApp = useSelector(store => store.app)
-    console.log(allStoreApp)
-
     useEffect(() => {
         resizeListener()
         dispatch(appInitialization())

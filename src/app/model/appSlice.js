@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { appAPI } from './appAPI'
 import { getCodesWithStatusNew } from 'modules/notification/model'
 import { authorizationAPI } from 'modules/authorization'
-import { setPanelInit } from 'modules/panel'
 
 const initialState = {
     data: {
@@ -93,7 +92,6 @@ export const appInitialization = createAsyncThunk(
             }
             
             dispatch(setAppInit())
-            dispatch(setPanelInit())
 
         } catch (error) {
             throw Error('Error')
