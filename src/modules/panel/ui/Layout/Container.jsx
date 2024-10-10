@@ -3,6 +3,8 @@ import { Layout } from "./Layout"
 import { useDispatch, useSelector } from "react-redux"
 import { resetSearchValue } from "modules/search"
 import { Navigate } from "react-router-dom"
+import { MainPreloader } from "modules/preloaders"
+import style from './Layout.module.sass'
 
 export const Container = () => {
 
@@ -16,13 +18,21 @@ export const Container = () => {
         dispatch(resetSearchValue())
     }
 
-    if(access && isPanelInit) {
-        return(
-            <Layout
-                searchValue={searchValue}
-                resetSearchQuery={resetSearchQuery}
-                />
-        )
+    if(access) {
+        if(isPanelInit) {
+            return(
+                <Layout
+                    searchValue={searchValue}
+                    resetSearchQuery={resetSearchQuery}
+                    />
+            )
+        } else {
+            return(
+                <div className={style.preloader}>
+                    <MainPreloader/>
+                </div>
+            )
+        }
     } else {
         return <Navigate to={'/access-denied'}/>
     }
