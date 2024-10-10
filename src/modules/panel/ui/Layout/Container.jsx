@@ -12,27 +12,18 @@ export const Container = () => {
 
     const searchValue = useSelector(store => store.search.searchValue)
     const access = useSelector(store => store.app.data.authData.access)
-    const isPanelInit = useSelector(store => store.panel.isInit)
 
     const resetSearchQuery = () => {
         dispatch(resetSearchValue())
     }
 
     if(access) {
-        if(isPanelInit) {
-            return(
-                <Layout
-                    searchValue={searchValue}
-                    resetSearchQuery={resetSearchQuery}
-                    />
-            )
-        } else {
-            return(
-                <div className={style.preloader}>
-                    <MainPreloader/>
-                </div>
-            )
-        }
+        return(
+            <Layout
+                searchValue={searchValue}
+                resetSearchQuery={resetSearchQuery}
+                />
+        )
     } else {
         return <Navigate to={'/access-denied'}/>
     }
