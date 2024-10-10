@@ -11,12 +11,13 @@ export const Select = ({
     fieldProps={},
     formikTouched=false,
     formikErrors=null,
+    disabled
 }) => {
 
     return(
         <label htmlFor={id || name} className={style.label} onChange={onChangeFunction ? (event) => onChangeFunction(event.target.value) : null}>
             <div className={style.title}>{label}</div>
-            <select {...fieldProps}>
+            <select {...fieldProps} disabled={disabled}>
                 <option disabled value="0" key={0}>{disabledText}</option>
                 {
                     options?.map(el => 

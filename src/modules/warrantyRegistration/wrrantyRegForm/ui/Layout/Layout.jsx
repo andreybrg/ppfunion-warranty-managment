@@ -5,6 +5,7 @@ import { InputDate, InputText, Select } from 'shared/fields'
 import { MainForm, MainFormMessage } from 'shared/forms'
 import { ReactComponent as AddPhoto } from 'assets/images/add_a_photo.svg'
 import { ReactComponent as DeletePhoto } from 'assets/images/delete.svg'
+import { FormPreloader } from 'modules/preloaders'
 
 export const Layout = ({ 
     regState,
@@ -14,11 +15,13 @@ export const Layout = ({
     photoRenderedFiles,
     onDeletePhoto,
     onChangePhotoFilesInput,
+    onPresubmitConfirmation,
+    isPending
 }) => {
 
     return(
         <div className={style.container}>
-            
+            {isPending ? <FormPreloader/> : null}
             <h1 className={style.title}>
                 {!regState.isSuccess ? 'Регистрация гарантии' : 'Гарантия успешно зарегистрирована'}
             </h1>
@@ -57,6 +60,7 @@ export const Layout = ({
                         formikTouched={formik.touched.code}
                         formikErrors={formik.errors.code}
                         placeholder={'XXXXXXXXXX'}
+                        disabled={isPending}
                         />
                 }
                 <InputText
@@ -67,6 +71,7 @@ export const Layout = ({
                     formikTouched={formik.touched.fullName}
                     formikErrors={formik.errors.fullName}
                     placeholder={'Фамилия Имя Отчество'}
+                    disabled={isPending}
                     />
                 <Select
                     label={'Тип оклейки'}
@@ -77,6 +82,7 @@ export const Layout = ({
                     fieldProps={{...formik.getFieldProps('wrappingType')}}
                     formikTouched={formik.touched.wrappingType}
                     formikErrors={formik.errors.wrappingType}
+                    disabled={isPending}
                     />
                 <InputDate
                     label={'Дата оклейки'}
@@ -85,6 +91,7 @@ export const Layout = ({
                     formikFieldProps={{...formik.getFieldProps('wrappingDatetime')}}
                     formikTouched={formik.touched.wrappingDatetime}
                     formikErrors={formik.errors.wrappingDatetime}
+                    disabled={isPending}
                     />
                 <InputText
                     label={'Название установщика плёнки'}
@@ -94,6 +101,7 @@ export const Layout = ({
                     formikTouched={formik.touched.installerName}
                     formikErrors={formik.errors.installerName}
                     placeholder={'Detailing Center Tomsk'}
+                    disabled={isPending}
                     />
                 <InputText
                     label={'Название автомобиля'}
@@ -103,6 +111,7 @@ export const Layout = ({
                     formikTouched={formik.touched.carName}
                     formikErrors={formik.errors.carName}
                     placeholder={'Марка и модель'}
+                    disabled={isPending}
                     />
                 <InputText
                     label={'Адрес установщика плёнки'}
@@ -112,6 +121,7 @@ export const Layout = ({
                     formikTouched={formik.touched.installerAddress}
                     formikErrors={formik.errors.installerAddress}
                     placeholder={'г. Томск, пр. Ленина, д. 507'}
+                    disabled={isPending}
                     />
                 <InputText
                     label={'Контактный телефон установщика плёнки'}
@@ -121,8 +131,8 @@ export const Layout = ({
                     formikTouched={formik.touched.installerContact}
                     formikErrors={formik.errors.installerContact}
                     placeholder={'+7 (999) 123-45-67'}
+                    disabled={isPending}
                     />
-                {/* <input type="hidden" {...formik.getFieldProps('photoLength')} /> */}
                                     
                 <div className={style.photos}>
                     <div className={style.photoFieldLabel}>
@@ -137,17 +147,17 @@ export const Layout = ({
                     <div className={style.photosList}>
                         {
                             photoRenderedFiles?.map((item, index, arr) => (
-                                <div key={index} className={style.photo}>
+                                <div key={index} className={style.photo} disabled={isPending}>
                                     <div className={style.photoContainer}>
                                         <img key={item.index} src={item.blob} />
-                                        <div onClick={() => {onDeletePhoto(index)}} className={style.delPhotoBtn}>
+                                        <div onClick={!isPending ? () =>  onDeletePhoto(index) : null} className={style.delPhotoBtn}>
                                             <DeletePhoto/>
                                         </div>
                                     </div>
                                 </div>
                             ))
                         }
-                        <label className={style.photo}>
+                        <label className={style.photo} disabled={isPending}>
                             <div className={style.photoContainer}>
                                 <AddPhoto/>
                                 <input multiple type="file" name="photos" id="photos" onChange={onChangePhotoFilesInput}/>
@@ -156,7 +166,7 @@ export const Layout = ({
                     </div>
                 </div>
 
-                <MainBtn disabled={regState.isPending} type="submit">
+                <MainBtn disabled={isPending} type="button" onClick={() => onPresubmitConfirmation()}>
                     Зарегистрировать
                 </MainBtn>
                 

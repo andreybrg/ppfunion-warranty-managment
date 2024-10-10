@@ -41,7 +41,6 @@ export const checkRights = createAsyncThunk(
         try{
             if(data.uid) {
                 const response = await dispatch(appAPI.endpoints.checkUserRights.initiate({uid: data.uid}))
-                console.log(response.data)
                 dispatch(setAccess({access: response.data.access}))
             }
         } catch (error) {

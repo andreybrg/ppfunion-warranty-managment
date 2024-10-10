@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Layout } from './Layout'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
@@ -8,14 +8,16 @@ import { toBase64 } from 'shared/utils/toBase64'
 import { registerCode } from 'modules/warrantyRegistration'
 import { PHOTO_LIMIT_ON_CODE_REGISTER } from 'shared/utils/constants'
 import { setNewMicroalert } from 'modules/alerts'
+import { ModalsContext } from 'modules/modals'
+import { WarrantyRegConfirmation } from 'modules/warrantyRegistration/warrantyRegConfirmation'
 
 export const Container = () => {
-
+    
     const dispatch = useDispatch()
     const { code } = useParams()
-    const isRequestPending = false
     const wrappingTypes = useSelector(store => store.app.data.appData.wrappingTypes)
     const regState = useSelector(store => store.warrantyRegistration.codeRegistration)
+    const { centeredModalController } = useContext(ModalsContext)
     
     const [photoFiles, setPhotoFiles] = useState([])
     const [photoRenderedFiles, setPhotoRenderedFiles] = useState([])
@@ -105,6 +107,43 @@ export const Container = () => {
         }
     })
 
+    const onClosePresubmit = () => {
+        centeredModalController.unmountCenteredModal()
+    }
+
+    const onConfirmationSubmit = () => {
+        onClosePresubmit()
+        formik.handleSubmit()
+    }
+    
+    const onPresubmitConfirmation = () => {
+        formik.setTouched({
+            ['code']: true, 
+            ['fullName']: true,
+            ['carName']: true,
+            ['installerName']: true,
+            ['installerAddress']: true,
+            ['installerContact']: true,
+            ['wrappingType']: true,
+            ['wrappingDatetime']: true,
+            ['photoLength']: true,
+        })
+        if(!Object.keys(formik.errors).length) {
+            centeredModalController.mountCenteredModal(
+                <WarrantyRegConfirmation 
+                    formikValues={formik.values}
+                    onClosePresubmit={onClosePresubmit}
+                    onSubmit={onConfirmationSubmit}
+                    wrappingTypes={wrappingTypes}
+                    isPending={regState.isPending} 
+                    />, 
+                'Всё указано верно?'
+            )
+        }
+    }
+
+       
+
     useEffect( () => {
         formik.setFieldValue('photoLength', photoFiles.length)
         mapBase64ToRender()
@@ -115,12 +154,13 @@ export const Container = () => {
         <Layout
             regState={regState}
             formik={formik}
-            isRequestPending={isRequestPending}
             code={code || null}
             wrappingTypes={wrappingTypes}
             photoRenderedFiles={photoRenderedFiles}
             onDeletePhoto={onDeletePhoto}
             onChangePhotoFilesInput={onChangePhotoFilesInput}
+            onPresubmitConfirmation={onPresubmitConfirmation}
+            isPending={regState.isPending} 
             />
     )
 }

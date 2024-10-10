@@ -38,6 +38,9 @@
     position: relative
     &:focus-visible
         border-color: var(--border-color)
+    &[disabled]
+        background-color: var(--disabled-input-bg-color)
+        border-color: var(--disabled-input-bg-color)
 
 @mixin inputLabel
     display: flex

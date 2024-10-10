@@ -9,6 +9,7 @@ export const InputText = ({
     formikFieldProps={},
     formikTouched=false,
     formikErrors=null,
+    disabled
 }) => {
 
 
@@ -19,6 +20,7 @@ export const InputText = ({
                 {...formikFieldProps}
                 placeholder={placeholder} 
                 type={'text'}
+                disabled={disabled}
                 />
             {formikTouched && formikErrors ? <div className={style.fieldError}>{formikErrors}</div> : null}
         </label>

@@ -10,6 +10,7 @@ export const InputDate = ({
     formikFieldProps={},
     formikTouched=false,
     formikErrors=null,
+    disabled
 }) => {
 
     return(
@@ -20,11 +21,12 @@ export const InputDate = ({
                 placeholder={placeholder} 
                 type={'date'}
                 max="3000-01-01"
+                disabled={disabled}
                 />
-            <div className={style.dateCloneField}>
+            <div className={style.dateCloneField} disabled={disabled}>
                 {formikFieldProps.value ? formikFieldProps.value : 'Выберите дату...'}
             </div>
-            <div className={style.date}>
+            <div className={style.date} disabled={disabled}>
                 <DatePickerSvg/>
             </div>
             {formikTouched && formikErrors ? <div className={style.fieldError}>{formikErrors}</div> : null}

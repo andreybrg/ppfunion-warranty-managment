@@ -29,6 +29,10 @@
     align-items: center
     pointer-events: none
     cursor: pointer
+    &[disabled]
+        background-color: var(--disabled-input-bg-color)
+        svg
+            opacity: .4
     svg
         path
             fill: var(--text-color)
@@ -40,6 +44,8 @@
     left: 0
     display: none
     pointer-events: none
+    &[disabled]
+        color: rgba(var(--rgb-text-color), .4)
     @include m.s900
         display: flex
         align-items: center

@@ -9,6 +9,7 @@ export const InputNumber = ({
     formikFieldProps={},
     formikTouched=false,
     formikErrors=null,
+    disabled
 }) => {
 
 
@@ -19,6 +20,7 @@ export const InputNumber = ({
                 {...formikFieldProps}
                 placeholder={placeholder} 
                 type={'number'}
+                disabled={disabled}
                 />
             {formikTouched && formikErrors ? <div className={style.fieldError}>{formikErrors}</div> : null}
         </label>

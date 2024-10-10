@@ -3,8 +3,6 @@ import { Layout } from "./Layout"
 import { useDispatch, useSelector } from "react-redux"
 import { resetSearchValue } from "modules/search"
 import { Navigate } from "react-router-dom"
-import { MainPreloader } from "modules/preloaders"
-import style from './Layout.module.sass'
 
 export const Container = () => {
 

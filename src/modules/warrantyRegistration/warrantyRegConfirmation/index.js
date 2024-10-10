@@ -1,0 +1,1 @@
+export { Layout as WarrantyRegConfirmation } from './ui/Layout/Layout'
