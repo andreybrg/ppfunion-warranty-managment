@@ -1,5 +1,5 @@
 import { Layout } from 'app/layout'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom'
 import { CodeQRGenerationModule } from 'modules/codeGenerator'
 import { SuggestToken } from 'pages/auth'
 import { Index } from 'pages/index'
@@ -13,6 +13,7 @@ export const AppRouter = () => {
         <BrowserRouter>
             <Routes>
                 <Route path={'/'} element={<Layout/>}>
+
                     <Route index element={<AuthorizedRoute><Index/></AuthorizedRoute>}/>
                     <Route path={'panel'} element={<ProtectedRoute/>}>
                     {/* <Route path={'panel'}> */}
@@ -27,6 +28,7 @@ export const AppRouter = () => {
                         <Route path={'token'} element={<SuggestToken/>}/>
                     </Route>
                     <Route path={'access-denied'} element={<AccessDenied/>}/>
+
                 </Route>
             </Routes>
         </BrowserRouter>

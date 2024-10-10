@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { codeGeneratorAPI } from './codeGeneratorAPI'
 import { codeListAPI } from 'modules/codeList/model'
 import { notificationAPI } from 'modules/notification'
+import { setNewMicroalert } from 'modules/alerts'
 
 export const addNewCodes = createAsyncThunk(
     'codeGenerator/addNewCodes',
@@ -19,12 +20,15 @@ export const addNewCodes = createAsyncThunk(
             if(response.data.error) {
                 throw Error('Error')
             } else {
-                await dispatch(codeListAPI.util.invalidateTags(["CodeList"]))
-                await dispatch(notificationAPI.util.invalidateTags(["CodeItem"]))
+                if(response.data.thereIsDoubled) {
+                    dispatch(setNewMicroalert({text: 'При генерации кодов были обнаружены дубликаты, которые были успешно удалены и не попали в базу.'}))
+                }
+                dispatch(codeListAPI.util.invalidateTags(["CodeList"]))
+                dispatch(notificationAPI.util.invalidateTags(["CodeItem"]))
+                
             }
         } catch (error) {
             console.error(error)
-            throw Error(error)
         }
     } 
 )

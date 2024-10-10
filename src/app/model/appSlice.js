@@ -76,7 +76,7 @@ export const appInitialization = createAsyncThunk(
     'app/appInitialization',
     async (_, {dispatch, getState}) => {
         try{
-
+            
             const response = await dispatch(appAPI.endpoints.getAppData.initiate())
             await dispatch(getCodesWithStatusNew())
             await dispatch(checkAuthorization())

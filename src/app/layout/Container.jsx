@@ -8,17 +8,15 @@ export const Container = ({ }) => {
         theme: 'mainTheme'
     }
     
-    const mainThemeRoutes = [
-        'panel',
-        'auth',
-        'access-denied'
+    const brandThemeRoutes = [
+        'register'
     ]
 
     const href = useHref()
 
     const splittedHref = href.split('/')
 
-    if(!mainThemeRoutes.includes(splittedHref[1]) && splittedHref[1]) themeData.theme = 'brandTheme'
+    if(brandThemeRoutes.includes(splittedHref[1]) || brandThemeRoutes.includes(splittedHref[2])) themeData.theme = 'brandTheme'
 
     return(
         <Layout
