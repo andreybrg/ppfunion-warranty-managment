@@ -26,7 +26,7 @@ export const AppRouter = () => {
                     <Route path={'auth'}>
                         <Route path={'token'} element={<SuggestToken/>}/>
                     </Route>
-                    <Route path={'access-denied'} element={<AuthorizedRoute><AccessDenied/></AuthorizedRoute>}/>
+                    <Route path={'access-denied'} element={<AccessDenied/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>
