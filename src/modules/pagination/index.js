@@ -1,1 +1,1 @@
-export { Layout as PaginationModule } from './ui/Layout/Layout'
+export { Container as PaginationModule } from './ui/Layout/Container'
