@@ -6,23 +6,30 @@ export const Layout = ({ paginationArray, setPage, currentPage }) => {
 
     return(
         <div className={style.pagination}>
-            {paginationArray.map((el, idx) =>
-                el
+            {
+                paginationArray.length > 1
                 ?
-                <button type='button' 
-                    onClick={() => setPage(el)}
-                    key={idx} 
-                    className={cn(
-                        style.item, 
-                        {[style.current]: el===currentPage ? true : false}
-                    )}>
-                    {el}
-                </button>
+                paginationArray.map((el, idx) =>
+                    el
+                    ?
+                    <button type='button' 
+                        onClick={() => setPage(el)}
+                        key={idx} 
+                        className={cn(
+                            style.item, 
+                            {[style.current]: el===currentPage ? true : false}
+                        )}>
+                        {el}
+                    </button>
+                    :
+                    <div className={style.spread} key={idx}>
+                        ...
+                    </div>
+                )
                 :
-                <div className={style.spread} key={idx}>
-                    ...
-                </div>
-            )}
+                null
+            }
+            
         </div>
     )
 }
