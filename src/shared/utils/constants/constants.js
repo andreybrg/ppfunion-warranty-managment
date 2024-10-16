@@ -4,7 +4,7 @@ export const CODE_REGISTER_PAGE_URL = 'https://andreybrg-ppfunion-warranty-manag
 export const IMAGES_DIRECTORY = 'https://sivkovdemo.ru/ppfunionapi/storage/images/'
 
 export const PHOTO_LIMIT_ON_CODE_REGISTER = 10
-export const CODE_QUERY_PAGE_LIMIT = 2
+export const CODE_QUERY_PAGE_LIMIT = 50
 export const CODE_STATUS_NAMES = {
     '1': 'status_new',
     '2': 'status_active',
