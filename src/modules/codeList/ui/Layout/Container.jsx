@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { Layout } from "./Layout"
 import { useGetCodesQuery } from "modules/codeList/model"
 import { MainPreloader } from "modules/preloaders"
@@ -9,7 +9,7 @@ export const Container = ({ queryData }) => {
 
     const {
         data: codesData, 
-        error: codesDataError, 
+        // error: codesDataError, 
         isLoading: codesDataIsLoading, 
         refetch: refetchCodesData,
         isFetching: codesDataIsFetching

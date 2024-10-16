@@ -18,7 +18,7 @@ export const Container = ({ totalCount }) => {
     const showCornerPagination = [0, pagesArray.length-1]
 
     const mappedPages = pagesArray.map((el, idx) => {
-        if(idx >= pstart && idx <= pend || showCornerPagination.includes(idx)) {
+        if((idx >= pstart && idx <= pend) || showCornerPagination.includes(idx)) {
             return el
         } else {
             return null
