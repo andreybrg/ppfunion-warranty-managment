@@ -1,15 +1,11 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { Layout } from "./Layout"
-import { setListPage, useGetCodesQuery } from "modules/codeList/model"
+import { useGetCodesQuery } from "modules/codeList/model"
 import { MainPreloader } from "modules/preloaders"
 import style from './Layout.module.sass'
 import { withCodesQueryData } from "shared/hoc"
 
 export const Container = ({ queryData }) => {
-
-    const changePage = (page) => {
-        setListPage({page})
-    }
 
     const {
         data: codesData, 
@@ -23,10 +19,12 @@ export const Container = ({ queryData }) => {
         refetchCodesData(queryData)
     }, [queryData.status])
 
-    if(!codesDataIsFetching && codesData) {
+    if(!codesDataIsLoading && codesData) {
         return(
             <Layout
                 data={codesData.data}
+                totalCount={codesData.totalCount}
+                isFetching={codesDataIsFetching}
                 />
         )
     } else {

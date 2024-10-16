@@ -1,0 +1,45 @@
+@use 'assets/styles/mixins' as m
+
+.pagination
+    display: flex
+    align-items: center
+    column-gap: 5px
+    margin: 40px 0 0 0
+
+.item
+    cursor: pointer
+    width: 35px
+    height: 35px
+    border: 1px solid rgba(var(--rgb-border-color), .17)
+    border-radius: 5px
+    background: unset
+    display: flex
+    align-items: center
+    justify-content: center
+    @include m.fontInter(16px, var(--text-color), 500, 120%)
+    background-color: var(--button-bg-color)
+    box-sizing: border-box
+    transition: border-color .2s
+    &:hover
+        border-color: var(--border-color)
+        transition: border-color .2s
+
+.current
+    cursor: inherit
+    color: var(--theme-inner-color)
+    background-color: var(--theme-color)
+    border-color: var(--theme-color)
+    &:hover
+        border-color: var(--theme-color)
+
+.spread
+    cursor: default
+    width: 35px
+    height: 35px
+    display: flex
+    align-items: center
+    justify-content: center
+    @include m.fontInter(16px, var(--text-color), 500, 120%)
+    opacity: .5
+    @include m.s900
+        width: fit-content

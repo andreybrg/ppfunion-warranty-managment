@@ -1,0 +1,1 @@
+export { Layout as PaginationModule } from './ui/Layout/Layout'

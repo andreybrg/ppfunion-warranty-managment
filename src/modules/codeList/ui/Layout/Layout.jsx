@@ -1,12 +1,14 @@
 import React from "react"
 import style from './Layout.module.sass'
 import { CodeItem } from "../CodeItem/CodeItem"
+import { PaginationModule } from "modules/pagination"
+import cn from "classnames"
 
-export const Layout = ({ data }) => {
+export const Layout = ({ data, totalCount, isFetching }) => {
 
     return(
         <>
-            <div className={style.list}>
+            <div className={cn(style.list, {[style.fetching]: isFetching})}>
                 {
                     data.length
                     ?
@@ -22,6 +24,7 @@ export const Layout = ({ data }) => {
                     </div>
                 }
             </div>
+            <PaginationModule totalCount={totalCount}/>
         </>
     )
 }
