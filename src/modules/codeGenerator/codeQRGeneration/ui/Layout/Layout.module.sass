@@ -6,7 +6,7 @@
     justify-content: center
     align-items: center
     row-gap: 30px
-    width: 300px
+    width: 330px
     margin: 0 auto
     padding: 100px 0 0 0
 .qrcode
@@ -21,12 +21,20 @@
 .code
     @include m.fontInter(26px, var(--text-color), 500, 120%)
 
+.codeInfo
+    display: none
+    flex-direction: column
+    row-gap: 30px
+    span
+        @include m.fontInter(16px, var(--text-color), 500, 140%)
+
 @media print
     @page
         margin: 0
         size: A4
     body
-        margin: 30mm 45mm 30mm 45mm
+        // padding: 30mm 45mm 30mm 45mm
+        box-sizing: border-box
     header
         display: none
 
@@ -44,5 +52,5 @@
     .container
         width: 100% !important
     
-    .wrapper
-        padding: 0
+    .codeInfo
+        display: flex

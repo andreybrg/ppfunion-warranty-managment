@@ -16,6 +16,20 @@ export const Layout = ({ code }) => {
             <div className={style.code}>
                 {code}
             </div>
+            <div className={style.codeInfo}>
+                <span>
+                Отсканируйте QR-код или перейдите по адресу w.ppfunion.com/register и зарегистрируйте официальную гарантию производителя сразу после установки плёнки.
+                </span>
+                <span>
+                Остались вопросы? Контакты для связи с производителем:
+                </span>
+                <span>
+                <b>ppfunion.com</b><br />
+                <b>+7 (991) 135-8157</b><br />
+                <b>+7 (991) 135-8156</b><br />
+                <b>provide.vseplenki@gmail.com</b>
+                </span>
+            </div>
             <MainBtn onClick={() => window.print()}>
                 Перейти к печати
             </MainBtn>

@@ -101,34 +101,6 @@ export const appInitialization = createAsyncThunk(
             dispatch(setAppInit())
         })
         .catch((error) => console.log('init error', error))
-        // try{
-            
-        //     const response = await dispatch(appAPI.endpoints.getAppData.initiate())
-        //     await dispatch(getCodesWithStatusNew())
-        //     await dispatch(checkAuthorization())
-
-        //     const authData = getState().app.data.authData
-        //     if(authData.isAuth) {
-        //         await dispatch(checkRights({uid: authData.data.id}))
-        //     }
-
-        //     if(!response.error) {
-        //         dispatch(setAppData(
-        //             {
-        //                 codeStatuses: response.data.data.codeStatuses,
-        //                 wrappingTypes: response.data.data.wrappingTypes,
-        //                 searchTypes: response.data.data.searchTypes
-        //             }   
-        //         ))
-        //     } else {
-        //         throw Error('Error')
-        //     }
-            
-        //     dispatch(setAppInit())
-
-        // } catch (error) {
-        //     throw Error('Error')
-        // }
     }
 )
 
