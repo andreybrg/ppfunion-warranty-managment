@@ -1,6 +1,15 @@
+@use 'assets/styles/mixins' as m
+
 .preloader
     width: 100%
     height: 100vh
     display: flex
     justify-content: center
     align-items: center
+
+.initError
+    width: calc( 100% - 40px )
+    margin: 50px auto
+    display: flex
+    justify-content: center
+    @include m.fontInter(16px, var(--text-color), 500, 140%)
