@@ -62,7 +62,6 @@ export const checkAuthorization = createAsyncThunk(
                 const authResp = await dispatch(authorizationAPI.endpoints.getAuthData.initiate({token: authToken}))
                 if(!authResp.error && authResp.isSuccess) {
                     dispatch(setAuthData({data: {isAuth: true, data: authResp.data}}))
-                    await dispatch(checkRights({uid: authResp.data.id}))
                 } else {
                     dispatch(setAuthData({data: {isAuth: false, data: null}}))
                 }
@@ -109,7 +108,11 @@ export const appInitialization = createAsyncThunk(
             dispatch(getCodesWithStatusNew()),
             dispatch(checkAuthorization())
         ])
-        .then(async ([a, b, c]) => {
+        .then(async () => {
+            const authData = getState().app.data.authData.data
+            await dispatch(checkRights({uid: authData.id}))
+        })
+        .then(() => {
             const isAppInitError = getState().app.data.isInitError
             if(!isAppInitError) {
                 dispatch(setAppInit())
