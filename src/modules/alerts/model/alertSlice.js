@@ -22,7 +22,7 @@ export const delLastMicroalert = createAsyncThunk(
     async (data, {dispatch}) => {
         setTimeout(()=>{
             dispatch(removeLastMicroalert())
-        }, 3000)
+        }, 10000)
     },
 )
 
