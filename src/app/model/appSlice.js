@@ -75,17 +75,16 @@ export const checkAuthorization = createAsyncThunk(
 export const appInitialization = createAsyncThunk(
     'app/appInitialization',
     async (_, {dispatch, getState}) => {
-        try{
-            
-            const response = await dispatch(appAPI.endpoints.getAppData.initiate())
-            await dispatch(getCodesWithStatusNew())
-            await dispatch(checkAuthorization())
-
+        Promise.all([
+            dispatch(appAPI.endpoints.getAppData.initiate()),
+            dispatch(getCodesWithStatusNew()),
+            dispatch(checkAuthorization())
+        ])
+        .then(async ([response, a, b]) => {
             const authData = getState().app.data.authData
             if(authData.isAuth) {
                 await dispatch(checkRights({uid: authData.data.id}))
             }
-
             if(!response.error) {
                 dispatch(setAppData(
                     {
@@ -97,12 +96,39 @@ export const appInitialization = createAsyncThunk(
             } else {
                 throw Error('Error')
             }
-            
+        })
+        .then(() => {
             dispatch(setAppInit())
+        })
+        .catch((error) => console.log('init error', error))
+        // try{
+            
+        //     const response = await dispatch(appAPI.endpoints.getAppData.initiate())
+        //     await dispatch(getCodesWithStatusNew())
+        //     await dispatch(checkAuthorization())
 
-        } catch (error) {
-            throw Error('Error')
-        }
+        //     const authData = getState().app.data.authData
+        //     if(authData.isAuth) {
+        //         await dispatch(checkRights({uid: authData.data.id}))
+        //     }
+
+        //     if(!response.error) {
+        //         dispatch(setAppData(
+        //             {
+        //                 codeStatuses: response.data.data.codeStatuses,
+        //                 wrappingTypes: response.data.data.wrappingTypes,
+        //                 searchTypes: response.data.data.searchTypes
+        //             }   
+        //         ))
+        //     } else {
+        //         throw Error('Error')
+        //     }
+            
+        //     dispatch(setAppInit())
+
+        // } catch (error) {
+        //     throw Error('Error')
+        // }
     }
 )
 
