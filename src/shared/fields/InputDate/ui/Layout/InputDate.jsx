@@ -2,6 +2,7 @@ import React, { useRef } from "react"
 import style from './InputDate.module.sass'
 import { ReactComponent as DatePickerSvg } from 'assets/images/calendar_month.svg'
 import { DateSchema } from "yup"
+import { dateFormatter } from "shared/dateFormatter"
 export const InputDate = ({ 
     label,
     id,
@@ -24,7 +25,7 @@ export const InputDate = ({
                 disabled={disabled}
                 />
             <div className={style.dateCloneField} disabled={disabled}>
-                {formikFieldProps.value ? formikFieldProps.value : 'Выберите дату...'}
+                {formikFieldProps.value ? dateFormatter(formikFieldProps.value) : 'Выберите дату...'}
             </div>
             <div className={style.date} disabled={disabled}>
                 <DatePickerSvg/>

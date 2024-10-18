@@ -27,14 +27,6 @@ export const logOut = createAsyncThunk(
     }
 )
 
-export const accessRequest = createAsyncThunk(
-    'app/accessRequest',
-    async (_, {dispatch, getState}) => {
-        const authData = getState().app.data.authData
-        await dispatch(appAPI.endpoints.accessRequest.initiate({id: authData.data.id, email: authData.data.default_email}))
-    }
-)
-
 export const checkRights = createAsyncThunk(
     'app/checkRights',
     async (data, {dispatch}) => {

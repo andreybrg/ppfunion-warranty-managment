@@ -8,13 +8,13 @@ export const registerCode = createAsyncThunk(
             const result = await dispatch(warrantyRegistrationAPI.endpoints.registerCode.initiate({code, formData}))
             if(result.error) {
                 dispatch(setResultMessage({message: result.error.data.message}))
-                window.scrollTo({top: 0, behavior: 'smooth'})
                 throw Error()
             } else {
                 dispatch(setResultMessage({message: result.data.message}))
             }
+            window.scrollTo({top: 0, behavior: 'smooth'})
         } catch (error) {
-            throw Error('error')
+            console.log(error)
         }
     }
 )

@@ -1,6 +1,7 @@
 import React from 'react'
 import style from './Layout.module.sass'
 import { MainBtn, SecondBtn } from 'shared/buttons'
+import { dateFormatter } from 'shared/dateFormatter'
 
 export const Layout = ({ formikValues, onClosePresubmit, onSubmit, wrappingTypes, isPending }) => {
 
@@ -14,12 +15,24 @@ export const Layout = ({ formikValues, onClosePresubmit, onSubmit, wrappingTypes
         photoLength: "Загружено фотографий",
         wrappingDatetime: "Дата оклейки",
         wrappingType: "Тип оклейки"
-    }    
+    }
+    
+    const fieldValues = {
+        carName: formikValues['carName'],
+        code: formikValues['code'],
+        fullName: formikValues['fullName'],
+        installerAddress: formikValues['installerAddress'],
+        installerContact: formikValues['installerContact'],
+        installerName: formikValues['installerName'],
+        photoLength: formikValues['photoLength'],
+        wrappingDatetime: dateFormatter(formikValues['wrappingDatetime']),
+        wrappingType: wrappingTypes.find(wt => wt.id == formikValues['wrappingType']).name
+    }
 
     return(
         <>
             <div className={style.undertitle}>
-                Проверьте информацию ещё раз. Если где-то допущена ошибка, можно вернуться и справить прежде, чем продолжить.
+                Проверьте информацию ещё раз. Если где-то допущена ошибка, можно вернуться и исправить.
             </div>
             <div className={style.fieldContent}>
                 {
@@ -27,13 +40,7 @@ export const Layout = ({ formikValues, onClosePresubmit, onSubmit, wrappingTypes
                         <div key={idx} className={style.presetField}>
                             <div className={style.title}>{fieldNames[el]}</div>
                             <div className={style.field}>
-                                {
-                                    el === 'wrappingType'
-                                    ?
-                                    wrappingTypes.find(wt => wt.id == formikValues[el]).name
-                                    :
-                                    formikValues[el]
-                                }
+                                {fieldValues[el]}
                             </div>
                         </div>
                     )

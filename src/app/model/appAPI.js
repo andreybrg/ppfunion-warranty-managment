@@ -20,18 +20,10 @@ export const appAPI = createApi({
                     response.status === 200 && !result.error
             }),
         }),
-        accessRequest: builder.query({
-            query: (data) => ({
-                url: `app/get/accessrequest/${data.id}/${data.email}`,
-                validateStatus: (response, result) =>
-                    response.status === 200 && !result.error
-            }),
-        }),
     }),
 })
 
 export const { 
     useGetAppDataQuery,
     useCheckUserRightsQuery,
-    useAccessRequestQuery
 } = appAPI
