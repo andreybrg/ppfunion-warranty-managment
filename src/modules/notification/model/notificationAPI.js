@@ -7,7 +7,7 @@ export const notificationAPI = createApi({
     endpoints: (builder) => ({
         // Получить данные для приложения
         getCodesNewStatus: builder.query({
-            query: ( data ) => ({
+            query: () => ({
                 url: `codes/get/new`,
                 validateStatus: (response, result) =>
                     response.status === 200 && !result.error

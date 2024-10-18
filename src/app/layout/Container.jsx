@@ -2,7 +2,7 @@ import React from "react"
 import { Layout } from "./Layout"
 import { useHref } from "react-router-dom"
 
-export const Container = ({ }) => {
+export const Container = () => {
 
     const themeData = {
         theme: 'mainTheme'

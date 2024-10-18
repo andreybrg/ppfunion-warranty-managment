@@ -1,8 +1,9 @@
 import React from "react"
 import { AppProvider } from "app/providers"
-import { ModalsProvider } from "modules/modals"
+import { ModalsModule, ModalsProvider } from "modules/modals"
 import { AppRouter } from "app/routers"
 import { AppInitialization } from "app/initialization"
+import { MicroAlert } from "modules/alerts"
 const App = () => {
   
   return (
@@ -11,6 +12,8 @@ const App = () => {
         <AppInitialization>
           <AppRouter/>
         </AppInitialization>
+        <ModalsModule/>
+        <MicroAlert/>
       </ModalsProvider>
     </AppProvider>
   )
