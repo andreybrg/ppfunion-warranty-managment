@@ -7,10 +7,15 @@ export const getCodesWithStatusNew = createAsyncThunk(
     'notice/getCodesWithStatusNew',
     async (data, {dispatch}) => {
         try {
-            await dispatch(notificationAPI.endpoints.getCodesNewStatus.initiate())
+            const response = await dispatch(notificationAPI.endpoints.getCodesNewStatus.initiate())
+            if(!response.error) {
+
+            } else {
+                throw new Error(response.error.message)
+            }
         } catch(error) {
             dispatch(setInitError())
-            dispatch(setNewMicroalert({text: 'Ошибка получения данных для уведомлений'}))
+            dispatch(setNewMicroalert({text: `Ошибка получения данных для уведомлений — ${error.message}`}))
         }
     } 
 )

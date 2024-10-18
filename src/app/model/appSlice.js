@@ -36,8 +36,12 @@ export const checkRights = createAsyncThunk(
             if(data.uid) {
                 const response = await dispatch(appAPI.endpoints.checkUserRights.initiate({uid: data.uid}))
                 dispatch(setAccess({access: response.data.access}))
-                if(!response.data.access) {
-                    throw new Error('Вам запрещено пользоваться данным ресурсом')
+                if(!response.error) {
+                    if(!response.data.access) {
+                        throw new Error('Вам запрещено пользоваться данным ресурсом')
+                    }
+                } else {
+                    throw new Error(`Ошибк при проверке прав — ${response.error.message}`)
                 }
             }
         } catch (error) {
@@ -87,7 +91,7 @@ export const getAndSetApplicationData = createAsyncThunk(
                     }   
                 ))
             } else {
-                throw Error('Ошибка получения данных приложения')
+                throw Error(`Ошибка получения данных приложения — ${response.error.message}`)
             }
 
         } catch (error) {
