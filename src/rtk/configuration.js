@@ -44,4 +44,6 @@ const store = configureStore({
             .concat(authorizationAPI.middleware)
 })
 
+window.restore = store
+
 export default store

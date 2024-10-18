@@ -109,8 +109,10 @@ export const appInitialization = createAsyncThunk(
             dispatch(checkAuthorization())
         ])
         .then(async () => {
-            const authData = getState().app.data.authData.data
-            await dispatch(checkRights({uid: authData.id}))
+            const authData = getState().app.data.authData
+            if(authData.isAuth) {
+                await dispatch(checkRights({uid: authData.id}))
+            }
         })
         .then(() => {
             const isAppInitError = getState().app.data.isInitError
