@@ -9,7 +9,6 @@ export const Layout = () => {
 
     const suggestion = async () => {
         const resp = await yandexAuthSuggest()
-        debugger
         console.log('respdata', resp)
         if(!resp.isError) {
             dispatch(checkAuthorization({token: resp.data.access_token}))

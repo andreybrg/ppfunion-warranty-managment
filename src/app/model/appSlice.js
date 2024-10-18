@@ -61,7 +61,10 @@ export const checkAuthorization = createAsyncThunk(
 
                 const authResp = await dispatch(authorizationAPI.endpoints.getAuthData.initiate({token: authToken}))
                 if(!authResp.error && authResp.isSuccess) {
-                    dispatch(setAuthData({data: {isAuth: true, data: authResp.data}}))
+                    Promise.all([dispatch(checkRights({uid: authResp.data.id}))])
+                        .then(()=> {
+                            dispatch(setAuthData({data: {isAuth: true, data: authResp.data}}))
+                        })
                 } else {
                     dispatch(setAuthData({data: {isAuth: false, data: null}}))
                 }
@@ -102,23 +105,14 @@ export const getAndSetApplicationData = createAsyncThunk(
 
 export const appInitialization = createAsyncThunk(
     'app/appInitialization',
-    async (_, {dispatch, getState}) => {
+    async (_, {dispatch}) => {
         Promise.all([
             dispatch(getAndSetApplicationData()),
             dispatch(getCodesWithStatusNew()),
             dispatch(checkAuthorization())
         ])
-        .then(async () => {
-            const authData = getState().app.data.authData
-            if(authData.isAuth) {
-                await dispatch(checkRights({uid: authData.id}))
-            }
-        })
         .then(() => {
-            const isAppInitError = getState().app.data.isInitError
-            if(!isAppInitError) {
-                dispatch(setAppInit())
-            }
+            dispatch(setAppInit())
         })
         .catch((error) => console.log('Init error', error))
     }

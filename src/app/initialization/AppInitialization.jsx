@@ -18,13 +18,13 @@ export const AppInitialization = ({ children }) => {
         return(
             children
         )
-    } else if(!isAppInitialized && !isAppInitError) {
+    } else if(!isAppInitialized) {
         return(
             <div className={style.preloader}>
                 <MainPreloader/>
             </div>
         )
-    } else {
+    } else if(isAppInitialized && isAppInitError) {
         return(
             <div className={style.initError}>
                 Ошибка инициализации приложения
