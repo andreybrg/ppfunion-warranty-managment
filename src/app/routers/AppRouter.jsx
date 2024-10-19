@@ -1,5 +1,5 @@
 import { Layout } from 'app/layout'
-import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { CodeQRGenerationModule } from 'modules/codeGenerator'
 import { SuggestToken } from 'pages/auth'
 import { Index } from 'pages/index'
@@ -10,7 +10,7 @@ import { AccessDenied } from 'pages/accessDenied'
 
 export const AppRouter = () => {
     return(
-        <BrowserRouter>
+        
             <Routes>
                 <Route path={'/'} element={<Layout/>}>
 
@@ -31,6 +31,6 @@ export const AppRouter = () => {
 
                 </Route>
             </Routes>
-        </BrowserRouter>
+        
     )
 }

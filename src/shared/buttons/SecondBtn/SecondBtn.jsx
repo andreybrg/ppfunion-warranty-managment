@@ -6,10 +6,12 @@ export const SecondBtn = ({ children, icon=null, to=null, newTab=false, ...attri
 
     if(to) {
         return(
+            <>
             <Link to={to} className={style.btn} target={newTab ? '_blank' : ''}>
                 {icon ? <img src={icon}/> : null}
                 <span>{children}</span>
             </Link>
+            </>
         )
     } else {
         return(

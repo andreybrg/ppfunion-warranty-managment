@@ -41,7 +41,7 @@ export const checkRights = createAsyncThunk(
                         throw new Error('Вам запрещено пользоваться данным ресурсом')
                     }
                 } else {
-                    throw new Error(`Ошибк при проверке прав — ${response.error.message}`)
+                    throw new Error(`Ошибк при проверке прав ${response.error.message}`)
                 }
             }
         } catch (error) {
@@ -61,7 +61,7 @@ export const checkAuthorization = createAsyncThunk(
 
                 const authResp = await dispatch(authorizationAPI.endpoints.getAuthData.initiate({token: authToken}))
                 if(!authResp.error && authResp.isSuccess) {
-                    Promise.all([dispatch(checkRights({uid: authResp.data.id}))])
+                    await Promise.all([dispatch(checkRights({uid: authResp.data.id}))])
                         .then(()=> {
                             dispatch(setAuthData({data: {isAuth: true, data: authResp.data}}))
                         })
@@ -93,7 +93,7 @@ export const getAndSetApplicationData = createAsyncThunk(
                     }   
                 ))
             } else {
-                throw Error(`Ошибка получения данных приложения — ${response.error.message}`)
+                throw Error(`Ошибка получения данных приложения ${response.error.message}`)
             }
 
         } catch (error) {
@@ -106,7 +106,7 @@ export const getAndSetApplicationData = createAsyncThunk(
 export const appInitialization = createAsyncThunk(
     'app/appInitialization',
     async (_, {dispatch}) => {
-        Promise.all([
+        await Promise.all([
             dispatch(getAndSetApplicationData()),
             dispatch(getCodesWithStatusNew()),
             dispatch(checkAuthorization())

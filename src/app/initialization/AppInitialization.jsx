@@ -14,20 +14,22 @@ export const AppInitialization = ({ children }) => {
         dispatch(appInitialization())
     }, [])
 
-    if(isAppInitialized && !isAppInitError) {
-        return(
-            children
-        )
-    } else if(!isAppInitialized) {
+    if(isAppInitialized) {
+        if(!isAppInitError) {
+            return(
+                children
+            )
+        } else {
+            return(
+                <div className={style.initError}>
+                    Ошибка инициализации приложения
+                </div>
+            )
+        }
+    } else {
         return(
             <div className={style.preloader}>
                 <MainPreloader/>
-            </div>
-        )
-    } else if(isAppInitialized && isAppInitError) {
-        return(
-            <div className={style.initError}>
-                Ошибка инициализации приложения
             </div>
         )
     }
