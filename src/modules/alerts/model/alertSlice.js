@@ -2,8 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     microalerts: {
-        list: [
-        ],
+        list: [],
     }
 }
 
@@ -22,7 +21,7 @@ export const delLastMicroalert = createAsyncThunk(
     async (data, {dispatch}) => {
         setTimeout(()=>{
             dispatch(removeLastMicroalert())
-        }, 10000)
+        }, 3000)
     },
 )
 
