@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react"
 import { Layout } from "./Layout"
 import { notificationAPI } from "modules/notification/model"
 
-export const Container = ({ message }) => {
+export const Container = () => {
 
     const useQueryStateResult = notificationAPI.endpoints.getCodesNewStatus.useQueryState()
     const [ isNoticeOpened, setIsNoticeOpened ] = useState(false)
